@@ -18,7 +18,7 @@ export default function App() {
 		<div className="max-w-[1280] mx-auto text-center">
 			<p>hello world</p>
 			<div className="flex flex-col w-[14rem] gap-y-4 mx-auto my-8 ">
-				<Button variant="contained" onClick={toggleTheme}>
+				<Button variant="contained" className="p-4" onClick={toggleTheme}>
 					toggle theme
 				</Button>
 
