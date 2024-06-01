@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { ThemeContext } from "@/feature/Theme/ThemeContextProvider";
 import fetchTrendingAll from "./api/fetchTrendingAll";
 import { TrendingAllResponse } from "./utils/types";
@@ -16,13 +16,16 @@ export default function App() {
 
 	return (
 		<div className="max-w-[1280] mx-auto text-center">
-			<p>hello world</p>
+			<p className="text-orange-500">hello world</p>
 			<div className="flex flex-col w-[14rem] gap-y-4 mx-auto my-8 ">
-				<Button variant="contained" className="p-4" onClick={toggleTheme}>
+				<Button variant="contained" onClick={toggleTheme}>
 					toggle theme
 				</Button>
 
-				<Button variant="contained" color="warning" onClick={fetchData}>
+				<Button
+					variant="contained"
+					className="w-[25rem] p-4 bg-blue-400"
+					onClick={fetchData}>
 					fetch data
 				</Button>
 			</div>
