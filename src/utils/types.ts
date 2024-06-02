@@ -31,12 +31,24 @@ export interface TVShow extends Media {
 	origin_country: string[];
 }
 
+//TrendingAllResult interface
+export interface TrendingAllResult extends Media {
+	original_title?: string;
+	title?: string;
+	release_date?: string;
+	video?: boolean;
+	original_name?: string;
+	name?: string;
+	first_air_date?: string;
+	origin_country?: string[];
+}
+
 // Trending All Response interface
 export interface TrendingAllResponse {
 	page: number;
 	total_pages: number;
 	total_results: number;
-	results: (Movie | TVShow)[];
+	results: TrendingAllResult[];
 }
 
 // People Known For interface

@@ -1,6 +1,6 @@
 import HomeSearch from "@/components/Home/HomeSearch";
 import HeroPride from "@/components/Home/HeroPride";
-import Sliders from "@/components/ui/Sliders";
+import SlidersWrapper from "@/components/ui/SlidersWrapper";
 
 function Home() {
 	return (
@@ -9,7 +9,13 @@ function Home() {
 			<HeroPride />
 
 			{/*  trending  */}
-			<Sliders title="trending" options={["today", "this week"]} />
+			<SlidersWrapper
+				title="trending"
+				options={[
+					{ title: "today", searchParam: "day" },
+					{ title: "this week", searchParam: "week" },
+				]}
+			/>
 		</>
 	);
 }
