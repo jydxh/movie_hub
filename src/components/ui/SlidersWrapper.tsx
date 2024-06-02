@@ -1,12 +1,19 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Slider_Button from "./Slider_Button";
-import fetchTrendingAll from "@/api/fetchTrendingAll";
+
 import { SliderCard } from "./SliderCard";
 import { TrendingAllResult } from "@/utils/types";
+import useFetchTrending from "@/hooks/useFetchTrending";
+
+export interface fetchDataType {
+	data: TrendingAllResult[] | null;
+	isLoading: boolean;
+	error: unknown;
+}
 
 export interface SelectedOption {
 	title: string;
-	searchParam: "day" | "week";
+	searchParam: string;
 }
 interface SliderProps {
 	title: string;
@@ -14,27 +21,11 @@ interface SliderProps {
 }
 
 function SlidersWrapper({ title, options }: SliderProps) {
-	const [selectedOption, setSelectedOption] = useState(options[0]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [selectedOption, setSelectedOption] = useState<SelectedOption>(
+		options[0]
+	);
 
-	const results = useRef<TrendingAllResult[] | null>(null);
-
-	const fetchData = useCallback(async () => {
-		setIsLoading(true);
-		try {
-			const data = await fetchTrendingAll(selectedOption["searchParam"]);
-			console.log(data);
-			results.current = data.results;
-		} catch (error) {
-			console.error(error);
-			throw error;
-		}
-		setIsLoading(false);
-	}, [selectedOption]);
-
-	useEffect(() => {
-		fetchData();
-	}, [fetchData]);
+	const { data, isLoading } = useFetchTrending(selectedOption);
 
 	return (
 		<section className="max-w-[1400px] mx-auto p-8">
@@ -49,11 +40,7 @@ function SlidersWrapper({ title, options }: SliderProps) {
 			</div>
 
 			<div className="max-w-[1400px] overflow-x-scroll flex justify-start items-center custom-scrollbar   gap-x-6">
-				{results.current !== null ? (
-					<SliderCard data={results.current} />
-				) : (
-					"fetching..."
-				)}
+				{data !== null ? <SliderCard data={data} /> : "fetching..."}
 			</div>
 		</section>
 	);
