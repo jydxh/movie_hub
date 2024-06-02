@@ -9,7 +9,10 @@ function Footer() {
 					<img src={footerLogo} alt="footerLogo" className="w-[10rem]" />
 				</Link>
 				<p className="md:text-2xl font-light">Modifed By Haocheng</p>
-				<a className="md:text-2xl font-light" href="https://github.com/jydxh">
+				<a
+					className="md:text-2xl font-light hover:bg-slate-300/5 px-4 py-2 rounded"
+					target="_blank"
+					href="https://github.com/jydxh">
 					github: jydxh
 				</a>
 			</div>
