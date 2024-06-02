@@ -10,8 +10,8 @@ function Sliders({ title, options }: SliderProps) {
 	const [selectedOption, setSelectedOption] = useState(options[0]);
 	return (
 		<section className="max-w-[1400px] mx-auto p-8">
-			<div className="flex gap-x-2 items-center">
-				<h4 className="capitalize">{title}</h4>
+			<div className="flex gap-x-2 md:gap-x-6 items-center">
+				<h4 className="capitalize font-bold text-xl">{title}</h4>
 				<Slider_Button
 					options={options}
 					selectedOption={selectedOption}

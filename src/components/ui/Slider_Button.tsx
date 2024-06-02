@@ -5,7 +5,7 @@ interface Slider_ButtonProps {
 }
 
 const buttonClass =
-	"px-4 rounded-full py-1 transition  duration-500 ease-in-out";
+	"px-4 rounded-full py-1 transition  duration-500 ease-in-out capitalize";
 
 function Slider_Button({
 	options,
