@@ -11,7 +11,7 @@ function Layout() {
 	return (
 		<>
 			<header className="bg-gradient-to-r from-sky-950 to-slate-900 px-6 text-white ">
-				<div className="mx-auto flex justify-between items-center max-w-[1280px] py-4">
+				<div className="mx-auto flex justify-between items-center max-w-[1400px] py-4">
 					<nav className="py-2 h-[36px] flex gap-x-8 justify-center items-center  font-semibold capitalize">
 						<Link to="/">
 							<img src={Logo} alt="logo" className="w-[10rem]" />
@@ -34,7 +34,7 @@ function Layout() {
 				</div>
 			</header>
 
-			<main className="max-w-[1280] mx-auto ">
+			<main className="max-w-[1400px] mx-auto ">
 				<Outlet />
 			</main>
 			<Footer />

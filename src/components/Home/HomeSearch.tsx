@@ -3,7 +3,7 @@ import SearchInput from "./SearchInput";
 function HomeSearch() {
 	return (
 		<section
-			className="max-w-[1280px] mx-auto h-[24rem] contrast-125  flex flex-col items-start justify-center gap-y-4 text-white brightness-90"
+			className="max-w-[1400px] mx-auto h-[24rem] contrast-125  flex flex-col items-start justify-center gap-y-4 text-white brightness-90"
 			style={{
 				backgroundImage: `url(${backgroundImg})`,
 				backgroundSize: "cover",
