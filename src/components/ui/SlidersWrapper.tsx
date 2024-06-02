@@ -1,15 +1,7 @@
 import { useState } from "react";
 import Slider_Button from "./Slider_Button";
-
 import { SliderCard } from "./SliderCard";
-import { TrendingAllResult } from "@/utils/types";
 import useFetchTrending from "@/hooks/useFetchTrending";
-
-export interface fetchDataType {
-	data: TrendingAllResult[] | null;
-	isLoading: boolean;
-	error: unknown;
-}
 
 export interface SelectedOption {
 	title: string;
@@ -25,7 +17,7 @@ function SlidersWrapper({ title, options }: SliderProps) {
 		options[0]
 	);
 
-	const { data, isLoading } = useFetchTrending(selectedOption);
+	const { data, isLoading, error } = useFetchTrending(selectedOption);
 
 	return (
 		<section className="max-w-[1400px] mx-auto p-8">
@@ -40,7 +32,13 @@ function SlidersWrapper({ title, options }: SliderProps) {
 			</div>
 
 			<div className="max-w-[1400px] overflow-x-scroll flex justify-start items-center custom-scrollbar   gap-x-6">
-				{data !== null ? <SliderCard data={data} /> : "fetching..."}
+				{data !== null ? (
+					<SliderCard data={data} />
+				) : error ? (
+					"load page failed"
+				) : (
+					"fetching..."
+				)}
 			</div>
 		</section>
 	);
