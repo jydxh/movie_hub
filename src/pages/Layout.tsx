@@ -14,7 +14,7 @@ function Layout() {
 				<div className="mx-auto flex justify-between items-center max-w-[1280px] py-4">
 					<nav className="py-2 h-[36px] flex gap-x-8 justify-center items-center  font-semibold capitalize">
 						<Link to="/">
-							<img src={Logo} alt="logo" className="w-[10rem]   " />
+							<img src={Logo} alt="logo" className="w-[10rem]" />
 						</Link>
 						<NavInline />
 						<div className="md:hidden relative -start-8 ">
@@ -33,7 +33,8 @@ function Layout() {
 					</div>
 				</div>
 			</header>
-			<main>
+
+			<main className="max-w-[1280] mx-auto ">
 				<Outlet />
 			</main>
 			<Footer />
