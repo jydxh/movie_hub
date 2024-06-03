@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Slider_Button from "./Slider_Button";
 import { SliderCard } from "./SliderCard";
-import useFetchTrending from "@/hooks/useFetchTrending";
+import useApiFetch from "@/hooks/useApiFetch";
+import { TrendingAllResult, MovieResult } from "@/utils/types";
 
 export interface SelectedOption {
 	title: string;
@@ -10,14 +11,19 @@ export interface SelectedOption {
 interface SliderProps {
 	title: string;
 	options: SelectedOption[];
+	fetchFunction: (
+		param: string
+	) => Promise<TrendingAllResult[] | MovieResult[]>;
 }
 
-function SlidersWrapper({ title, options }: SliderProps) {
+function SlidersWrapper({ title, options, fetchFunction }: SliderProps) {
 	const [selectedOption, setSelectedOption] = useState<SelectedOption>(
 		options[0]
 	);
 
-	const { data, isLoading, error } = useFetchTrending(selectedOption);
+	const { data, isLoading, error } = useApiFetch<
+		TrendingAllResult[] | MovieResult[]
+	>(selectedOption, fetchFunction);
 
 	return (
 		<section className="max-w-[1400px] mx-auto p-8">
