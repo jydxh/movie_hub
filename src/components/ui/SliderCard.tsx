@@ -28,7 +28,7 @@ export function SliderCard({ data }: SliderCardProps) {
 						<p className="relative -top-4 left-4  rounded-full bg-sky-800/70 w-[2.4rem] h-[2.4rem] flex justify-center items-center">
 							{Math.ceil(vote_average * 10)}
 						</p>
-						<p>{title || name}</p>
+						<p className="line-clamp-2">{title || name}</p>
 						<p className="mt-4 font-light text-gray-500">
 							{formateDate(release_date) || formateDate(first_air_date)}
 						</p>
