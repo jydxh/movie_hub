@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Slider_Button from "@/components/ui/Slider_Button";
 import { SliderCard } from "@/components/ui/SliderCard";
+import useApiFetch from "@/hooks/useApiFetch";
+import fetchHomeTV from "@/api/fetchHomeTV";
 
 const title = "Trending TV";
 const options = [
@@ -11,7 +13,7 @@ const options = [
 function HomeFreeWatch() {
 	const [selectedOption, setSelectedOption] = useState(options[0]);
 
-	const { data, isLoading, error } = useFetchHomeFreeWatch(selectedOption);
+	const { data, isLoading, error } = useApiFetch(selectedOption, fetchHomeTV);
 
 	return (
 		<section className="max-w-[1400px] mx-auto p-8">

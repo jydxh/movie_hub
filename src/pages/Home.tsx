@@ -1,8 +1,9 @@
 import HomeSearch from "@/components/Home/HomeSearch";
 import HeroPride from "@/components/Home/HeroPride";
-import SlidersWrapper from "@/components/ui/SlidersWrapper";
+
 import HomeTrending from "@/components/Home/HomeTrending";
 import HomePopular from "@/components/Home/HomePopular";
+import HomeFreeWatch from "@/components/Home/HomeFreeWatch";
 
 function Home() {
 	return (
@@ -16,6 +17,7 @@ function Home() {
 			<HomePopular />
 
 			{/* free to watch */}
+			<HomeFreeWatch />
 			{/* 
 			<SlidersWrapper
 				title="free to watch"

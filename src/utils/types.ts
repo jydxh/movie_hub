@@ -117,3 +117,66 @@ export interface MovieData {
 	total_pages: number;
 	total_results: number;
 }
+
+export interface TVResults {
+	backdrop_path: string;
+	id: number;
+	original_name: string;
+	overview: string;
+	poster_path: string;
+	media_type: string;
+	adult: boolean;
+	name: string;
+	original_language: string;
+	genre_ids: number[];
+	popularity: number;
+	first_air_date: string;
+	vote_average: number;
+	vote_count: number;
+	origin_country: string[];
+}
+export interface TVResponse {
+	page: number;
+	results: TVResults[];
+	total_pages: number;
+	total_results: number;
+}
+
+export interface PersonResult {
+	id: number;
+	original_name: string;
+	media_type: "person";
+	adult: boolean;
+	name: string;
+	popularity: number;
+	gender: number;
+	known_for_department: string;
+	profile_path: string | null;
+	known_for: KnownForItem[];
+}
+
+export interface SearchResponse {
+	page: number;
+	results: Array<MovieResult | PersonResult | TVResults>;
+	total_pages: number;
+	total_results: number;
+}
+
+export interface KnownForItem {
+	backdrop_path: string | null;
+	id: number;
+	original_name: string;
+	overview: string;
+	poster_path: string | null;
+	media_type: "tv" | "movie";
+	adult: boolean;
+	name?: string;
+	original_language: string;
+	genre_ids: number[];
+	popularity: number;
+	first_air_date?: string;
+	release_date?: string;
+	vote_average: number;
+	vote_count: number;
+	origin_country?: string[];
+}
