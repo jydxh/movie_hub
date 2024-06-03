@@ -1,8 +1,8 @@
 import formateDate from "@/utils/formateDate";
 import { baseImgUrl } from "@/utils/types";
-import { TrendingAllResult } from "@/utils/types";
+import { TrendingAllResult, MovieResult } from "@/utils/types";
 export interface SliderCardProps {
-	data: TrendingAllResult[];
+	data: TrendingAllResult[] | MovieResult[];
 }
 
 export function SliderCard({ data }: SliderCardProps) {

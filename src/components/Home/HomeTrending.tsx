@@ -1,26 +1,24 @@
 import { useState } from "react";
 import Slider_Button from "@/components/ui/Slider_Button";
 import { SliderCard } from "@/components/ui/SliderCard";
-import useApiFetch from "@/hooks/useApiFetch";
-import { MovieResult } from "@/utils/types";
-import fetchHomePopular from "@/api/fetchHomePopular";
 
-const title = "What's Popular";
+import useApiFetch from "@/hooks/useApiFetch";
+import { TrendingAllResult } from "@/utils/types";
+import fetchTrendingAll from "@/api/fetchTrendingAll";
+
+const title = "trending";
 const options = [
-	{ title: "streaming", searchParam: "1" },
-	{ title: "on TV", searchParam: "2" },
-	{ title: "for rent", searchParam: "3" },
-	{ title: "In theatres", searchParam: "4" },
+	{ title: "today", searchParam: "day" },
+	{ title: "this week", searchParam: "week" },
 ];
 
-function HomePopular() {
+function HomeTrending() {
 	const [selectedOption, setSelectedOption] = useState(options[0]);
 
-	const { data, isLoading, error } = useApiFetch<MovieResult[]>(
+	const { data, isLoading, error } = useApiFetch<TrendingAllResult[]>(
 		selectedOption,
-		fetchHomePopular
+		fetchTrendingAll
 	);
-
 	return (
 		<section className="max-w-[1400px] mx-auto p-8">
 			<div className="flex gap-x-2 md:gap-x-6 items-center">
@@ -45,4 +43,4 @@ function HomePopular() {
 		</section>
 	);
 }
-export default HomePopular;
+export default HomeTrending;

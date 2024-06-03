@@ -1,6 +1,8 @@
 import HomeSearch from "@/components/Home/HomeSearch";
 import HeroPride from "@/components/Home/HeroPride";
 import SlidersWrapper from "@/components/ui/SlidersWrapper";
+import HomeTrending from "@/components/Home/HomeTrending";
+import HomePopular from "@/components/Home/HomePopular";
 
 function Home() {
 	return (
@@ -8,47 +10,20 @@ function Home() {
 			<HomeSearch />
 			<HeroPride />
 
-			{/*  trending  */}
-			<SlidersWrapper
-				title="trending"
-				options={[
-					{ title: "today", searchParam: "day" },
-					{ title: "this week", searchParam: "week" },
-				]}
-			/>
-			{/* trailers */}
-			<SlidersWrapper
-				title="latest trailers"
-				options={[
-					{ title: "popular", searchParam: "" },
-					{ title: "streaming", searchParam: "" },
-					{ title: "on TV", searchParam: "" },
-					{ title: "for rent", searchParam: "" },
-					{ title: "in theatres", searchParam: "" },
-				]}
-			/>
+			<HomeTrending />
 
 			{/* popular */}
-
-			<SlidersWrapper
-				title="What's Popular"
-				options={[
-					{ title: "streaming", searchParam: "" },
-					{ title: "on TV", searchParam: "" },
-					{ title: "for rent", searchParam: "" },
-					{ title: "In theatres", searchParam: "" },
-				]}
-			/>
+			<HomePopular />
 
 			{/* free to watch */}
-
+			{/* 
 			<SlidersWrapper
 				title="free to watch"
 				options={[
 					{ title: "movie", searchParam: "" },
 					{ title: "TV", searchParam: "" },
 				]}
-			/>
+			/> */}
 		</>
 	);
 }

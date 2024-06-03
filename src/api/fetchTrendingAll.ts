@@ -1,12 +1,12 @@
 import { TrendingAllResponse } from "@/utils/types";
 import { customFetch } from "./customFetch";
 
-export default async function fetchTrendingAll(dayOrWeek: string) {
+export default async function fetchTrendingAll(param: string) {
 	try {
 		const res = await customFetch<TrendingAllResponse>(
-			`/trending/all/${dayOrWeek}?language=en-US`
+			`/trending/all/${param}?language=en-US`
 		);
-		return res.data;
+		return res.data.results;
 	} catch (error) {
 		throw Error("failed to fetch trendingAll");
 	}
