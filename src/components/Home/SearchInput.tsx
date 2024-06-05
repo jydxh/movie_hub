@@ -3,14 +3,14 @@ import { Button } from "@mui/material";
 
 function SearchInput() {
 	return (
-		<Form className="w-full mt-10">
-			<div className="w-full flex">
+		<Form className="mt-10 mx-auto w-[95%]">
+			<div className="flex">
 				<input
 					type="text"
-					className="rounded-full w-full py-2 ps-4 outline-none text-black"
+					className="rounded-full w-full py-2 ps-4 outline-none text-black ms-[39px]"
 					placeholder="Search for a movie, tv show,person..."
 				/>
-				<Button className="bg-teal-500 text-white hover:text-black rounded-full p-2 w-[8rem]  capitalize  text-lg relative -left-[102px]">
+				<Button className="bg-teal-500 text-white hover:text-black rounded-full p-2 w-[6rem]   capitalize text-sm  md:text-lg relative -left-[39px]">
 					Search
 				</Button>
 			</div>

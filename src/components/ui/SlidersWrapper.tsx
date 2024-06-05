@@ -36,8 +36,8 @@ function SlidersWrapper({ title, options, fetchFunction }: SliderProps) {
 					setSelectedOption={setSelectedOption}
 				/>
 			</div>
-
-			<div className="max-w-[1400px] overflow-x-scroll flex justify-start items-center custom-scrollbar   gap-x-6">
+			{/* <div className="max-w-[1336px] overflow-hidden box-border"> */}
+			<div className=" box-border max-w-[1336px] mx-auto p-2 overflow-x-scroll flex justify-start items-center custom-scrollbar gap-x-6">
 				{data !== null ? (
 					<SliderCard data={data} />
 				) : error ? (
@@ -46,6 +46,7 @@ function SlidersWrapper({ title, options, fetchFunction }: SliderProps) {
 					"fetching..."
 				)}
 			</div>
+			{/* </div> */}
 		</section>
 	);
 }
