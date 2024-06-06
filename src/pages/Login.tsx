@@ -1,15 +1,21 @@
 import { Button } from "@mui/material";
 import { ActionFunction, Form, redirect } from "react-router-dom";
+import { store } from "@/store";
+import { login } from "@/feature/User/userSlice";
 
 export const action: ActionFunction = async ({
 	request,
 }): Promise<Response> => {
 	const rawData = await request.formData();
-	const formData = Object.fromEntries(rawData);
+	const formData = Object.fromEntries(rawData) as {
+		username: string;
+		password: string;
+	};
 	console.log(formData);
 	alert(
 		"sending data to back end for authentication and return the JWT, the Backend Comming soon"
 	);
+	store.dispatch(login(formData));
 	return redirect("/");
 };
 

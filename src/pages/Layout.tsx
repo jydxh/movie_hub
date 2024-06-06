@@ -1,13 +1,22 @@
 import Logo from "@/assets/TMDB_logo.svg";
-import { Outlet } from "react-router";
+import { Outlet, useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import NavInline from "@/components/HomeLayout/NavInline";
 import NavList from "@/components/HomeLayout/NavList";
 import ThemeToggle from "@/components/HomeLayout/ThemeToggle";
 import Footer from "@/components/HomeLayout/Footer";
 import { Button } from "@mui/material";
+import { store } from "@/store";
+import { logout } from "@/feature/User/userSlice";
 
 function Layout() {
+	const username = store.getState().user.username;
+	const { pathname } = useLocation(); // use location to get the current location url info and destruct the pathname
+	const navigate = useNavigate(); // programmaly nav to the path, so to update the ui
+	const handlelogout = () => {
+		store.dispatch(logout());
+		navigate(pathname);
+	};
 	return (
 		<>
 			<header className="bg-gradient-to-r from-sky-950 to-slate-900 px-6 text-white ">
@@ -24,12 +33,23 @@ function Layout() {
 
 					<div className="flex gap-x-1 items-center">
 						<ThemeToggle />
-						<Button>
-							<Link to="/login">Login</Link>
-						</Button>
-						<Button>
-							<Link to="/register"> Register</Link>
-						</Button>
+						{username ? (
+							<>
+								<p>Welcome {username}</p>
+								<Button className="capitalize" onClick={handlelogout}>
+									Logout
+								</Button>
+							</>
+						) : (
+							<>
+								<Button>
+									<Link to="/login">Login</Link>
+								</Button>
+								<Button>
+									<Link to="/register"> Register</Link>
+								</Button>
+							</>
+						)}
 					</div>
 				</div>
 			</header>
