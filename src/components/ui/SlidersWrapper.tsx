@@ -3,6 +3,7 @@ import Slider_Button from "./Slider_Button";
 import { SliderCard } from "./SliderCard";
 import useApiFetch from "@/hooks/useApiFetch";
 import { TrendingAllResult, MovieResult } from "@/utils/types";
+import FetchingSkeleton from "./FetchingSkeleton";
 
 export interface SelectedOption {
 	title: string;
@@ -43,7 +44,7 @@ function SlidersWrapper({ title, options, fetchFunction }: SliderProps) {
 				) : error ? (
 					"load page failed"
 				) : (
-					"fetching..."
+					<FetchingSkeleton />
 				)}
 			</div>
 		</section>
