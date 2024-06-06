@@ -18,14 +18,6 @@ function Home() {
 
 			{/* free to watch */}
 			<HomeFreeWatch />
-			{/* 
-			<SlidersWrapper
-				title="free to watch"
-				options={[
-					{ title: "movie", searchParam: "" },
-					{ title: "TV", searchParam: "" },
-				]}
-			/> */}
 		</>
 	);
 }
