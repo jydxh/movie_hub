@@ -9,13 +9,13 @@ function HomeSearch() {
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 			}}>
-			<div className="mx-12">
+			<div className="mx-auto">
 				<h1 className="text-5xl font-semibold">Welcome.</h1>
 				<h2 className="text-3xl mt-2 font-semibold tracking-wide">
 					Millions of movies, TV shows and people to discoiver. Explore now.
 				</h2>
 			</div>
-			<div className="mx-12 w-full">
+			<div className="w-full mx-auto">
 				<SearchInput />
 			</div>
 		</section>
