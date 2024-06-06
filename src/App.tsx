@@ -10,6 +10,8 @@ import {
 	SingleMovie,
 } from "./pages";
 
+import { action as LoginAction } from "@/pages/Login";
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
 	{
 		path: "/login",
 		element: <Login />,
+		action: LoginAction,
 	},
 	{
 		path: "/register",
