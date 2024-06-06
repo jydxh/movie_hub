@@ -13,6 +13,7 @@ function useApiFetch<T>(
 		setIsLoading(true);
 		try {
 			const data = await apiFetchFn(selectedOption.searchParam);
+			//console.log(data);
 			setData(data);
 		} catch (error) {
 			console.error(error);

@@ -8,7 +8,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-	width: 8px !important;
+	width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -18,18 +18,10 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
 	background-color: #4a5568; /* thumb color */
 	border-radius: 10px;
-	border: 1px solid #edf2f7;
-	/* border around thumb */
+	border: 2px solid #edf2f7; /* border around thumb */
 }
 
 .custom-scrollbar::-webkit-scrollbar-button {
-	display: none;
-}
-.custom-scrollbar::-moz-scrollbar-button {
-	display: none;
-}
-
-.custom-scrollbar::-ms-scrollbar-button {
 	display: none;
 }
 
