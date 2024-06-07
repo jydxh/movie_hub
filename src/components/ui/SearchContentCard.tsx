@@ -14,18 +14,18 @@ function SearchContentCard({
 	overview,
 }: SearchContentProps) {
 	return (
-		<div className="w-full pe-4 shadow-lg border border-gray-300">
-			<div>
+		<div className="w-full pe-4 shadow-lg border rounded-lg border-gray-300 flex mb-6 gap-x-6">
+			<div className="flex-shrink-0">
 				<img
-					src={baseImgUrl + "/original" + poster}
+					src={baseImgUrl + "/w500" + poster}
 					alt={title}
-					className="w-[4rem] h-[8rem]"
+					className="w-[8rem] h-[12rem] rounded-ss-lg object-fit"
 				/>
 			</div>
-			<div>
+			<div className="mt-4">
 				<h4>{title}</h4>
-				<p className="text-gray-400">{formateDate(release_date)}</p>
-				<article>{overview}</article>
+				<p className="text-gray-400 ">{formateDate(release_date)}</p>
+				<article className="line-clamp-2 mt-8">{overview}</article>
 			</div>
 		</div>
 	);

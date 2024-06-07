@@ -1,8 +1,9 @@
 import SearchInput from "@/components/Search/SearchInput";
 import SearchTags from "@/components/Search/SearchTags";
-import { LoaderFunction, Outlet } from "react-router";
+import { LoaderFunction, Outlet, useLoaderData } from "react-router";
 import fetchMultiSearch from "@/api/fetchMultiSearch";
 import { MultiSearchResponse } from "@/utils/types";
+import { useLayoutEffect } from "react";
 
 export const loader: LoaderFunction = async ({
 	request,
@@ -24,11 +25,10 @@ function Search() {
 	return (
 		<main>
 			<SearchInput />
-			<div className="grid grid-col-1 md:flex items-center gap-x-8 ">
+			<div className="grid grid-col-1 md:flex items-start gap-x-8 p-4">
 				<div>
 					<SearchTags />
 				</div>
-
 				<div>
 					<Outlet />
 				</div>

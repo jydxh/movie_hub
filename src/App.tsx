@@ -39,9 +39,8 @@ const router = createBrowserRouter([
 			{
 				path: "search",
 				element: <Search />,
-				loader: HomeSearchLoader,
 				children: [
-					{ index: true, element: <MultSearch /> },
+					{ index: true, element: <MultSearch />, loader: HomeSearchLoader },
 					{ path: "movies", element: <MovieSearch /> },
 					{ path: "people", element: <PeopleSearch /> },
 					{ path: "keywords", element: <KeywordsSearch /> },
