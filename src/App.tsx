@@ -8,6 +8,14 @@ import {
 	TvShow,
 	People,
 	SingleMovie,
+	Search,
+	MultSearch,
+	MovieSearch,
+	PeopleSearch,
+	KeywordsSearch,
+	CollectionsSearch,
+	CompaniesSearch,
+	TVshowsSearch,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -26,6 +34,19 @@ const router = createBrowserRouter([
 			{ path: "movie/:id", element: <SingleMovie /> },
 			{ path: "tvShow", element: <TvShow /> },
 			{ path: "people", element: <People /> },
+			{
+				path: "search",
+				element: <Search />,
+				children: [
+					{ index: true, element: <MultSearch /> },
+					{ path: "movies", element: <MovieSearch /> },
+					{ path: "people", element: <PeopleSearch /> },
+					{ path: "keywords", element: <KeywordsSearch /> },
+					{ path: "collections", element: <CollectionsSearch /> },
+					{ path: "companies", element: <CompaniesSearch /> },
+					{ path: "tvShow", element: <TVshowsSearch /> },
+				],
+			},
 		],
 	},
 	{
