@@ -93,7 +93,7 @@ export interface TrendingPeople {
 }
 
 export interface MovieResult {
-	adult: boolean;
+	/* adult: boolean;
 	backdrop_path: string;
 	genre_ids: number[];
 	id: number;
@@ -104,6 +104,21 @@ export interface MovieResult {
 	poster_path: string;
 	release_date: string;
 	title: string;
+	video: boolean;
+	vote_average: number;
+	vote_count: number; */
+	backdrop_path: string | null;
+	id: number;
+	original_title: string;
+	overview: string;
+	poster_path: string;
+	media_type: "movie";
+	adult: boolean;
+	title: string;
+	original_language: string;
+	genre_ids: number[];
+	popularity: number;
+	release_date: string;
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
@@ -124,7 +139,7 @@ export interface TVResults {
 	original_name: string;
 	overview: string;
 	poster_path: string;
-	media_type: string;
+	media_type: "tv";
 	adult: boolean;
 	name: string;
 	original_language: string;
@@ -155,7 +170,7 @@ export interface PersonResult {
 	known_for: KnownForItem[];
 }
 
-export interface SearchResponse {
+export interface MultiSearchResponse {
 	page: number;
 	results: Array<MovieResult | PersonResult | TVResults>;
 	total_pages: number;
