@@ -1,11 +1,13 @@
 import { LoaderFunction } from "react-router";
-import { MultiSearchResponse } from "@/utils/types";
+import { MultiSearchResponse, CollectionResultResponse } from "@/utils/types";
 import fetchMultiSearch from "@/api/fetchMultiSearch";
 
 function multiSearchLoader(
-	mode: "multi" | "movie" | "tv" | "person"
+	mode: "multi" | "movie" | "tv" | "person" | "collection"
 ): LoaderFunction {
-	return async ({ request }): Promise<MultiSearchResponse | null> => {
+	return async ({
+		request,
+	}): Promise<MultiSearchResponse | null | CollectionResultResponse> => {
 		const url = new URL(request.url);
 		const serachQuery = url.searchParams.get("query")!;
 		const page = url.searchParams.get("page");

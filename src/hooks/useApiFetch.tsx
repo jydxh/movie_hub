@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-
+/* this is a hook to fetch the data for the home page */
 import { SelectedOption } from "@/components/ui/SlidersWrapper";
 function useApiFetch<T>(
 	selectedOption: SelectedOption,

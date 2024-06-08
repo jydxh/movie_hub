@@ -58,7 +58,11 @@ const router = createBrowserRouter([
 						element: <PeopleSearch />,
 						loader: multiSearchLoader("person"),
 					},
-					{ path: "collections", element: <CollectionsSearch /> },
+					{
+						path: "collections",
+						element: <CollectionsSearch />,
+						loader: multiSearchLoader("collection"),
+					},
 				],
 			},
 		],

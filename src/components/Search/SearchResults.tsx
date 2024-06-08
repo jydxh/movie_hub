@@ -16,7 +16,7 @@ function SearchResults({
 		result: MovieResult | PersonResult | TVResults
 	): result is TVResults => result.media_type === "tv";
 
-	console.log(results);
+	//console.log(results);
 	return (
 		<div>
 			{results.map(result => {
