@@ -1,5 +1,6 @@
 import SearchContentCard from "@/components/ui/SearchContentCard";
 import { MovieResult, PersonResult, TVResults } from "@/utils/types";
+import SearchPeopleCard from "./SearchPeopleCard";
 
 function SearchResults({
 	results,
@@ -32,13 +33,22 @@ function SearchResults({
 						/>
 					);
 				} else if (isPersonResult(result)) {
-					const { id, name, known_for_department, profile_path } = result;
+					const {
+						id,
+						name,
+						known_for_department: department,
+						profile_path,
+						gender,
+						known_for,
+					} = result;
 					return (
-						<SearchContentCard
+						<SearchPeopleCard
 							key={id}
-							overview={known_for_department}
 							poster={profile_path}
-							title={name}
+							name={name}
+							gender={gender}
+							department={department}
+							known_for={known_for}
 						/>
 					);
 				}

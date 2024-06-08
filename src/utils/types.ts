@@ -210,6 +210,7 @@ export interface KnownForItem {
 	media_type: "tv" | "movie";
 	adult: boolean;
 	name?: string;
+	title: string;
 	original_language: string;
 	genre_ids: number[];
 	popularity: number;
