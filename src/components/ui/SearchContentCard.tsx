@@ -21,7 +21,7 @@ function SearchContentCard({
 					<img
 						src={baseImgUrl + "/w500" + poster}
 						alt={title}
-						className="w-[8rem] h-[12rem] rounded-ss-lg object-fit"
+						className="w-[8rem] h-[12rem] rounded-s-lg object-fit"
 					/>
 				) : (
 					<Skeleton

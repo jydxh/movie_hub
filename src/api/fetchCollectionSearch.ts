@@ -1,6 +1,6 @@
 import { customFetch } from "./customFetch";
 import { CollectionResultResponse } from "@/utils/types";
-async function fetchMultiSearch(
+async function fetchCollectionSearch(
 	query: string,
 	page: string = "1"
 ): Promise<CollectionResultResponse> {
@@ -10,4 +10,4 @@ async function fetchMultiSearch(
 	console.log(res.data);
 	return res.data;
 }
-export default fetchMultiSearch;
+export default fetchCollectionSearch;

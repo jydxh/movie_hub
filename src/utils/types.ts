@@ -187,6 +187,13 @@ export interface CollectionResultResponse {
 	total_results: number;
 }
 
+export interface MovieResultResponse {
+	page: number;
+	results: Array<MovieResult>;
+	total_pages: number;
+	total_results: number;
+}
+
 export interface MultiSearchResponse {
 	page: number;
 	results: Array<MovieResult | PersonResult | TVResults>;

@@ -28,6 +28,7 @@ function MultSearch() {
 			params.append("page", page.toString());
 		}
 		navigate(pathname + "?" + params.toString());
+		window.scrollTo(0, 0);
 	};
 	/* type guard! */
 	const isMovieResult = (
