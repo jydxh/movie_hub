@@ -1,18 +1,21 @@
 import SearchInput from "@/components/Search/SearchInput";
 import SearchTags from "@/components/Search/SearchTags";
-import { LoaderFunction, Outlet, useLoaderData } from "react-router";
+import { LoaderFunction, Outlet } from "react-router";
 import fetchMultiSearch from "@/api/fetchMultiSearch";
 import { MultiSearchResponse } from "@/utils/types";
-import { useLayoutEffect } from "react";
 
 export const loader: LoaderFunction = async ({
 	request,
 }): Promise<MultiSearchResponse | null> => {
 	const url = new URL(request.url);
 	const query = url.searchParams.get("query")!;
+	let page = url.searchParams.get("page");
 
 	try {
-		const data = await fetchMultiSearch(query);
+		if (page === null) {
+			page = "1";
+		}
+		const data = await fetchMultiSearch(query, page);
 		console.log(data);
 		return data;
 	} catch (error) {
