@@ -6,17 +6,19 @@ const navLinkClass =
 function SearchTags() {
 	const { search } = useLocation();
 	//console.log(search);
+	const searchParams = new URLSearchParams(search);
+	searchParams.delete("page");
 	return (
 		<div className="grid md:w-[16rem]  text-center border border-gray-300 rounded">
 			<h3 className="bg-blue-400 rounded p-4">
-				<Link to={`/search${search}`}>Search Results</Link>
+				<Link to={`/search?${searchParams}`}>Search Results</Link>
 			</h3>
 			<div className="mt-2">
 				{tags.map(tag => {
 					return (
 						<NavLink
 							key={tag}
-							to={`${tag}${search}`}
+							to={`${tag}?${searchParams}`}
 							className={({ isActive }) =>
 								`${
 									isActive ? "bg-gray-200 text-black font-semibold" : ""
