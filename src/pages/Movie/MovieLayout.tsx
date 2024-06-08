@@ -1,5 +1,6 @@
 import SubNavbar from "@/components/ui/SubNavbar";
 import { Outlet } from "react-router";
+import MovieFilter from "@/components/Movie/MovieFilter";
 
 const movieSubList = [
 	{ to: "popular", label: "popular" },
@@ -12,7 +13,10 @@ function MovieLayout() {
 	return (
 		<div>
 			<SubNavbar list={movieSubList} />
-			<Outlet />
+			<div className="grid grid-cols-1 md:flex md:gap-x-8 p-8">
+				<MovieFilter />
+				<Outlet />
+			</div>
 		</div>
 	);
 }

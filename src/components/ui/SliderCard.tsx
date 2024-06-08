@@ -1,6 +1,7 @@
 import formateDate from "@/utils/formateDate";
 import { baseImgUrl } from "@/utils/types";
 import { TrendingAllResult, MovieResult } from "@/utils/types";
+import RatingCircle from "./RatingCircle";
 export interface SliderCardProps {
 	data: TrendingAllResult[] | MovieResult[];
 }
@@ -25,9 +26,7 @@ export function SliderCard({ data }: SliderCardProps) {
 							alt={title}
 							className="w-[10rem] rounded-md shadow-lg"
 						/>
-						<p className="relative -top-4 left-4  rounded-full bg-sky-800/70 w-[2.4rem] h-[2.4rem] flex justify-center items-center">
-							{Math.ceil(vote_average * 10)}
-						</p>
+						<RatingCircle value={vote_average} />
 						<p className="line-clamp-2">{title || name}</p>
 						<p className="mt-4 font-light text-gray-500">
 							{formateDate(release_date) || formateDate(first_air_date)}
