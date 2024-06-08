@@ -1,56 +1,13 @@
-import fetchMultiSearch from "@/api/fetchMultiSearch";
 import SearchContentCard from "@/components/ui/SearchContentCard";
 import { MultiSearchResponse, MovieResult } from "@/utils/types";
-import {
-	LoaderFunction,
-	useLoaderData,
-	useNavigate,
-	useLocation,
-} from "react-router";
+import { useLoaderData } from "react-router";
 import { Pagination } from "@mui/material";
-
-export const loader: LoaderFunction = async ({
-	request,
-}): Promise<MultiSearchResponse | null> => {
-	const url = new URL(request.url);
-	const serachQuery = url.searchParams.get("query")!;
-	const page = url.searchParams.get("page");
-
-	try {
-		if (page) {
-			const res = await fetchMultiSearch(serachQuery, page, "movie");
-			console.log(res);
-			return res;
-		} else {
-			const res = await fetchMultiSearch(serachQuery, "1", "movie");
-			console.log(res);
-			return res;
-		}
-	} catch (error) {
-		console.log(error);
-		return null;
-	}
-};
+import usePagination from "@/hooks/usePagination";
 
 function MovieSearch() {
 	const { page, total_pages, results } = useLoaderData() as MultiSearchResponse;
 
-	const navigate = useNavigate();
-	const { pathname, search } = useLocation();
-	const handlePageChange = (
-		evt: React.ChangeEvent<unknown>,
-		page: number
-	): void => {
-		const params = new URLSearchParams(search);
-		if (params.has("page")) {
-			params.set("page", page.toString());
-		} else {
-			params.append("page", page.toString());
-		}
-
-		navigate(pathname + "?" + params.toString());
-		window.scrollTo(0, 0); // scroll to the top of the page
-	};
+	const { handlePageChange } = usePagination();
 
 	return (
 		<>

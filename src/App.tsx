@@ -18,9 +18,8 @@ import {
 
 import { action as LoginAction } from "@/pages/Login";
 import { action as RegisterAction } from "@/pages/Register";
-// import { action as HomeSearchAction } from "@/pages/Search";
-import { loader as HomeSearchLoader } from "@/pages/Search";
-import { loader as MovieSearchLoader } from "@/pages/Search/MovieSearch";
+
+import multiSearchLoader from "@/utils/multiSearchLoader";
 
 const router = createBrowserRouter([
 	{
@@ -39,15 +38,27 @@ const router = createBrowserRouter([
 				path: "search",
 				element: <Search />,
 				children: [
-					{ index: true, element: <MultSearch />, loader: HomeSearchLoader },
+					{
+						index: true,
+						element: <MultSearch />,
+						loader: multiSearchLoader("multi"),
+					},
 					{
 						path: "movies",
 						element: <MovieSearch />,
-						loader: MovieSearchLoader,
+						loader: multiSearchLoader("movie"),
 					},
-					{ path: "people", element: <PeopleSearch /> },
+					{
+						path: "tvShow",
+						element: <TVshowsSearch />,
+						loader: multiSearchLoader("tv"),
+					},
+					{
+						path: "people",
+						element: <PeopleSearch />,
+						loader: multiSearchLoader("person"),
+					},
 					{ path: "collections", element: <CollectionsSearch /> },
-					{ path: "tvShow", element: <TVshowsSearch /> },
 				],
 			},
 		],
