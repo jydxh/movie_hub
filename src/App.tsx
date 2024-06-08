@@ -4,7 +4,7 @@ import {
 	Home,
 	Login,
 	Register,
-	Movie,
+	MovieLayout,
 	TvShow,
 	People,
 	SingleMovie,
@@ -14,6 +14,10 @@ import {
 	PeopleSearch,
 	CollectionsSearch,
 	TVshowsSearch,
+	PopularMovie,
+	PlayingMovie,
+	UpcomingMovie,
+	TopRatedMovie,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -29,7 +33,13 @@ const router = createBrowserRouter([
 			{ index: true, element: <Home /> },
 			{
 				path: "movie",
-				element: <Movie />,
+				element: <MovieLayout />,
+				children: [
+					{ path: "popular", element: <PopularMovie /> },
+					{ path: "playing", element: <PlayingMovie /> },
+					{ path: "upcoming", element: <UpcomingMovie /> },
+					{ path: "top_rated", element: <TopRatedMovie /> },
+				],
 			},
 			{ path: "movie/:id", element: <SingleMovie /> },
 			{ path: "tvShow", element: <TvShow /> },
