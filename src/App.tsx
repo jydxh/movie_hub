@@ -12,9 +12,7 @@ import {
 	MultSearch,
 	MovieSearch,
 	PeopleSearch,
-	KeywordsSearch,
 	CollectionsSearch,
-	CompaniesSearch,
 	TVshowsSearch,
 } from "./pages";
 
@@ -48,9 +46,7 @@ const router = createBrowserRouter([
 						loader: MovieSearchLoader,
 					},
 					{ path: "people", element: <PeopleSearch /> },
-					{ path: "keywords", element: <KeywordsSearch /> },
 					{ path: "collections", element: <CollectionsSearch /> },
-					{ path: "companies", element: <CompaniesSearch /> },
 					{ path: "tvShow", element: <TVshowsSearch /> },
 				],
 			},

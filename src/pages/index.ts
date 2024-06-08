@@ -10,9 +10,9 @@ import Search from "./Search";
 import MultSearch from "./Search/MultSearch";
 import PeopleSearch from "./Search/PeopleSearch";
 import MovieSearch from "./Search/MovieSearch";
-import KeywordsSearch from "./Search/KeywordsSearch";
+
 import CollectionsSearch from "./Search/CollectionsSearch";
-import CompaniesSearch from "./Search/CompaniesSearch";
+
 import TVshowsSearch from "./Search/TVshowsSearch";
 
 export {
@@ -28,8 +28,6 @@ export {
 	MultSearch,
 	MovieSearch,
 	PeopleSearch,
-	KeywordsSearch,
 	CollectionsSearch,
-	CompaniesSearch,
 	TVshowsSearch,
 };
