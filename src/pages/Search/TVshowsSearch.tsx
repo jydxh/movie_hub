@@ -1,4 +1,6 @@
+import useSearch from "@/hooks/useSearch";
+
 function TVshowsSearch() {
-	return <div>TVshowsSearch</div>;
+	return useSearch("tv");
 }
 export default TVshowsSearch;

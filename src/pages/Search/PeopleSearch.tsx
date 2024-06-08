@@ -1,4 +1,6 @@
+import useSearch from "@/hooks/useSearch";
+
 function PeopleSearch() {
-	return <div>PeopleSearch</div>;
+	return useSearch("people");
 }
 export default PeopleSearch;
