@@ -1,4 +1,6 @@
+import useMovieList from "@/hooks/useMovieList";
+
 function TopRatedMovie() {
-	return <div>TopRatedMovie</div>;
+	return useMovieList("top rated movies");
 }
 export default TopRatedMovie;

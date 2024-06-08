@@ -1,4 +1,6 @@
+import useMovieList from "@/hooks/useMovieList";
+
 function PlayingMovie() {
-	return <div>PlayingMovie</div>;
+	return useMovieList("Now Playing Movies");
 }
 export default PlayingMovie;

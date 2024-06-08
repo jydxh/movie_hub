@@ -15,7 +15,7 @@ function MovieListCard({
 	vote_average,
 }: MovieListCardProps) {
 	return (
-		<li className=" rounded-lg md:w-[12rem]  border border-gray-200 shadow-lg flex flex-col justify-start items-start">
+		<li className="mx-auto rounded-lg md:w-[12rem] w-[80%] border border-gray-200 shadow-lg flex flex-col justify-start items-start">
 			<img
 				src={`https://media.themoviedb.org/t/p/w440_and_h660_face${imgPath}`}
 				alt={title}

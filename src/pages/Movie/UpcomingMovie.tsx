@@ -1,4 +1,6 @@
+import useMovieList from "@/hooks/useMovieList";
+
 function UpcomingMovie() {
-	return <div>UpcomingMovie</div>;
+	return useMovieList("upcoming movies");
 }
 export default UpcomingMovie;
