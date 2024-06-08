@@ -1,4 +1,5 @@
 import SubNavbar from "@/components/ui/SubNavbar";
+import { Outlet } from "react-router";
 
 const movieSubList = [
 	{ to: "popular", label: "popular" },
@@ -11,6 +12,7 @@ function MovieLayout() {
 	return (
 		<div>
 			<SubNavbar list={movieSubList} />
+			<Outlet />
 		</div>
 	);
 }

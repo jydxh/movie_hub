@@ -192,6 +192,7 @@ export interface MovieResultResponse {
 	results: Array<MovieResult>;
 	total_pages: number;
 	total_results: number;
+	dates?: { maximum: string; minumum: string };
 }
 
 export interface MultiSearchResponse {

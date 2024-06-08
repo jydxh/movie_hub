@@ -24,6 +24,7 @@ import { action as LoginAction } from "@/pages/Login";
 import { action as RegisterAction } from "@/pages/Register";
 
 import multiSearchLoader from "@/utils/multiSearchLoader";
+import movieListsLoader from "./utils/movieListsLoader";
 
 const router = createBrowserRouter([
 	{
@@ -35,10 +36,26 @@ const router = createBrowserRouter([
 				path: "movie",
 				element: <MovieLayout />,
 				children: [
-					{ path: "popular", element: <PopularMovie /> },
-					{ path: "playing", element: <PlayingMovie /> },
-					{ path: "upcoming", element: <UpcomingMovie /> },
-					{ path: "top_rated", element: <TopRatedMovie /> },
+					{
+						path: "popular",
+						element: <PopularMovie />,
+						loader: movieListsLoader("popular"),
+					},
+					{
+						path: "playing",
+						element: <PlayingMovie />,
+						loader: movieListsLoader("now_playing"),
+					},
+					{
+						path: "upcoming",
+						element: <UpcomingMovie />,
+						loader: movieListsLoader("upcoming"),
+					},
+					{
+						path: "top_rated",
+						element: <TopRatedMovie />,
+						loader: movieListsLoader("top_rated"),
+					},
 				],
 			},
 			{ path: "movie/:id", element: <SingleMovie /> },
