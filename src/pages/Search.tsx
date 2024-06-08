@@ -16,7 +16,7 @@ export const loader: LoaderFunction = async ({
 			page = "1";
 		}
 		const data = await fetchMultiSearch(query, page);
-		console.log(data);
+		//	console.log(data);
 		return data;
 	} catch (error) {
 		console.log(error);

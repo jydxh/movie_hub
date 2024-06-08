@@ -170,6 +170,23 @@ export interface PersonResult {
 	known_for: KnownForItem[];
 }
 
+export interface CollectionResult {
+	adult: boolean;
+	backdrop_path: string;
+	id: number;
+	name: string;
+	original_language: string;
+	original_name: string;
+	overview: string;
+	poster_path: string;
+}
+export interface CollectionResultResponse {
+	page: number;
+	results: Array<CollectionResult>;
+	total_pages: number;
+	total_results: number;
+}
+
 export interface MultiSearchResponse {
 	page: number;
 	results: Array<MovieResult | PersonResult | TVResults>;

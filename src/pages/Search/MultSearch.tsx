@@ -10,10 +10,10 @@ import { Pagination } from "@mui/material";
 
 function MultSearch() {
 	const data = useLoaderData() as MultiSearchResponse;
-	console.log(data);
+	//console.log(data);
 	const navigate = useNavigate();
 	const { pathname, search } = useLocation();
-	console.log(pathname, search);
+	//console.log(pathname, search);
 
 	const { results, page, total_pages } = data;
 
