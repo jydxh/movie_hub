@@ -1,13 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const tags = [
-	"movies",
-	"tvShow",
-	"people",
-	"collections",
-	"companies",
-	"keywords",
-];
+const tags = ["movies", "tvShow", "people", "collections"];
 const navLinkClass =
 	"flex items-center justify-between p-2 hover:bg-gray-200 hover:text-black";
 function SearchTags() {
@@ -25,7 +18,9 @@ function SearchTags() {
 									isActive ? "bg-gray-200 text-black font-semibold" : ""
 								} ${navLinkClass}`
 							}>
-							<p className="mx-auto">{tag}</p>
+							<p className="mx-auto capitalize">
+								{tag === "tvShow" ? "tv Shows" : tag}
+							</p>
 						</NavLink>
 					);
 				})}
