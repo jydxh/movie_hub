@@ -5,6 +5,9 @@ import { useLoaderData } from "react-router";
 
 function useMovieList(title: string) {
 	const { results, total_results } = useLoaderData() as MovieResultResponse;
+	const handleLoadMore = () => {
+		alert("infinity loading is on the way!");
+	};
 	return (
 		<div className="md:mt-0 mt-8 w-full">
 			<h2 className="font-semibold tracking-wide text-2xl mb-4 capitalize">
@@ -28,6 +31,14 @@ function useMovieList(title: string) {
 						);
 					})}
 				</ul>
+
+				<div>
+					<button
+						onClick={handleLoadMore}
+						className="font-bold text-xl w-full bg-cyan-500 hover:bg-cyan-400 p-2 mt-8 rounded-lg">
+						Load More
+					</button>
+				</div>
 			</div>
 		</div>
 	);
