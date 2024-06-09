@@ -2,11 +2,11 @@ import SearchInput from "@/components/Search/SearchInput";
 import SearchTags from "@/components/Search/SearchTags";
 import { LoaderFunction, Outlet } from "react-router";
 import fetchMultiSearch from "@/api/fetchMultiSearch";
-import { MultiSearchResponse } from "@/utils/types";
+import { MultiSearchResponse, CollectionResultResponse } from "@/utils/types";
 
 export const loader: LoaderFunction = async ({
 	request,
-}): Promise<MultiSearchResponse | null> => {
+}): Promise<MultiSearchResponse | null | CollectionResultResponse> => {
 	const url = new URL(request.url);
 	const query = url.searchParams.get("query")!;
 	let page = url.searchParams.get("page");

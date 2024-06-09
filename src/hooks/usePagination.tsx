@@ -8,6 +8,7 @@ function usePagination() {
 		page: number
 	): void => {
 		const params = new URLSearchParams(search);
+		console.log(evt);
 		if (params.has("page")) {
 			params.set("page", page.toString());
 		} else {
