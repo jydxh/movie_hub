@@ -7,7 +7,7 @@ import HomeFreeWatch from "@/components/Home/HomeFreeWatch";
 
 function Home() {
 	return (
-		<>
+		<div className="min-w-[615px]">
 			<HomeSearch />
 			<HeroPride />
 
@@ -18,7 +18,7 @@ function Home() {
 
 			{/* free to watch */}
 			<HomeFreeWatch />
-		</>
+		</div>
 	);
 }
 export default Home;
