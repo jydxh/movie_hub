@@ -25,7 +25,7 @@ function Register() {
 			}}>
 			<Form
 				method="POST"
-				className=" border rounded-xl p-8 md:w-[30rem] w-[26rem] bg-slate-700 ">
+				className=" border rounded-xl p-8 md:w-[30rem] w-[24rem] bg-slate-700 ">
 				<p className="text-center mx-auto text-3xl font-semibold">
 					Registration
 				</p>

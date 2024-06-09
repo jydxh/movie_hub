@@ -32,7 +32,7 @@ function Login() {
 			}}>
 			<Form
 				method="POST"
-				className=" border rounded-xl p-8 md:w-[30rem] w-[26rem] bg-slate-700">
+				className=" border rounded-xl p-8 md:w-[30rem] w-[24rem] bg-slate-700">
 				<p className="text-center mx-auto text-3xl font-semibold">Login</p>
 				<div className="mt-8 flex justify-center items-center gap-x-4">
 					<label htmlFor="username" className="text-xl">
