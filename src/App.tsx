@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+	//	createBrowserRouter,
+	createHashRouter,
+	RouterProvider,
+} from "react-router-dom";
 import {
 	Layout,
 	Home,
@@ -26,7 +30,8 @@ import { action as RegisterAction } from "@/pages/Register";
 import multiSearchLoader from "@/utils/multiSearchLoader";
 import movieListsLoader from "./utils/movieListsLoader";
 
-const router = createBrowserRouter([
+//const router = createBrowserRouter([
+const router = createHashRouter([
 	{
 		path: "/",
 		element: <Layout />,
