@@ -22,7 +22,7 @@ function Layout() {
 		<>
 			<header
 				className={`bg-gradient-to-r from-sky-950 to-slate-900 px-8 text-white ${
-					pathname === "/" && " min-w-[615px]"
+					pathname === "/" && " min-w-[630px]"
 				}`}>
 				<div
 					className={`mx-auto flex justify-between items-center max-w-[1400px] py-4 ${

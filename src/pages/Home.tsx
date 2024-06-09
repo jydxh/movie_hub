@@ -7,7 +7,7 @@ import HomeFreeWatch from "@/components/Home/HomeFreeWatch";
 
 function Home() {
 	return (
-		<div className="min-w-[615px]">
+		<div className="min-w-[630px]">
 			<HomeSearch />
 			<HeroPride />
 
