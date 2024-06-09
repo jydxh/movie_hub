@@ -1,9 +1,13 @@
 import footerLogo from "@/assets/TMDB_footer_logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Footer() {
+	const { pathname } = useLocation();
 	return (
-		<footer className=" bg-gradient-to-r from-sky-950 to-slate-900 p-10 text-white ">
+		<footer
+			className={`bg-gradient-to-r from-sky-950 to-slate-900 p-10 mx-auto text-white ${
+				pathname === "/" && " min-w-[615px] px-0"
+			} `}>
 			<div className="flex justify-center md:justify-between items-center p-4 mx-auto max-w-[1280px] gap-x-10">
 				<Link to="/">
 					<img src={footerLogo} alt="footerLogo" className="w-[10rem]" />
