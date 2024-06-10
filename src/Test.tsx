@@ -3,15 +3,15 @@ import fetchHomePopular from "./api/fetchHomePopular";
 import { MovieResult } from "./utils/types";
 import { LoaderFunction, useLoaderData } from "react-router";
 
+export const loader: LoaderFunction = async () => {
+	const res = await fetchHomePopular("1");
+	return res;
+};
+
 const options = {
 	//root: null,
 	rootMargin: "200px",
 	threshold: 0.5,
-};
-
-export const loader: LoaderFunction = async () => {
-	const res = await fetchHomePopular("1");
-	return res;
 };
 
 function Test() {
@@ -35,6 +35,7 @@ function Test() {
 	};
 
 	const ObserverCallBack = useCallback(
+		/*  This callback is triggered when an intersection occurs between the observed element and the root element, as defined by the IntersectionObserver's options.*/
 		(entries: IntersectionObserverEntry[]) => {
 			const target = entries[0];
 			if (target.isIntersecting && !isLoading) {
