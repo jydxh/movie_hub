@@ -7,7 +7,7 @@ export const loader: LoaderFunction = async () => {
 	const res = await fetchHomePopular("1");
 	return res;
 };
-
+/* the idea for this components is that use the react-router-loader for the inital data fetching, and then when user click the load more button, the inifinity scroll mode will be triggered and will use the IntersetionObserver API to watch the page pass certain viewport, and fetching data and append data into the dataState, so the whole page will become longer   */
 const options = {
 	//root: null,
 	rootMargin: "200px",
