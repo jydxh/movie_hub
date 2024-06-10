@@ -30,6 +30,7 @@ function useMovieList(title: string) {
 		setIsInfiniteScrollEnabled(true);
 	};
 
+	/* the fetchData funtion for the infinity fetching  */
 	const fetchData = useCallback(
 		async (page: number) => {
 			let params: "popular" | "now_playing" | "upcoming" | "top_rated" =
@@ -39,7 +40,10 @@ function useMovieList(title: string) {
 			if (pathname.includes("top_rated")) params = "top_rated";
 			setIsLoading(true);
 			const { results } = await fetchMovieList(params, page.toString());
-			setResults(prev => [...prev, ...results]);
+			setResults(prev => [
+				...prev,
+				...results,
+			]); /* get the fetched data and insert into results state */
 			setIsLoading(false);
 		},
 		[pathname]
@@ -64,9 +68,9 @@ function useMovieList(title: string) {
 	useEffect(() => {
 		const currentDivRef = divRef.current;
 		if (isInfiniteScrollEnabled) {
-			const observer = new IntersectionObserver(ObserverCallBack, options);
+			const observer = new IntersectionObserver(ObserverCallBack, options); // using the IntersectionObserver API to kind of like add event listener when the window moves to the some point of the viewport, the callbackfuntion will be triggered
 			if (currentDivRef) {
-				observer.observe(currentDivRef);
+				observer.observe(currentDivRef); // use the div with the divRef as the reference to trigger the callbackfunntion
 			}
 
 			return () => {
