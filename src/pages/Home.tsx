@@ -5,8 +5,6 @@ import HomeTrending from "@/components/Home/HomeTrending";
 import HomePopular from "@/components/Home/HomePopular";
 import HomeFreeWatch from "@/components/Home/HomeFreeWatch";
 
-import Test from "@/Test";
-
 function Home() {
 	return (
 		<>
@@ -22,7 +20,6 @@ function Home() {
 				{/* free to watch */}
 				<HomeFreeWatch />
 			</div>
-			<Test />
 		</>
 	);
 }
