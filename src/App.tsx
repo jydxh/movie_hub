@@ -30,13 +30,15 @@ import { action as RegisterAction } from "@/pages/Register";
 import multiSearchLoader from "@/utils/multiSearchLoader";
 import movieListsLoader from "./utils/movieListsLoader";
 
+import { loader as TestLoader } from "@/Test";
+
 //const router = createBrowserRouter([
 const router = createHashRouter([
 	{
 		path: "/",
 		element: <Layout />,
 		children: [
-			{ index: true, element: <Home /> },
+			{ index: true, element: <Home />, loader: TestLoader },
 			{
 				path: "movie",
 				element: <MovieLayout />,

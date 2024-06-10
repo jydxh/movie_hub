@@ -4,11 +4,11 @@ function usePagination() {
 	const navigate = useNavigate();
 	const { pathname, search } = useLocation();
 	const handlePageChange = (
-		evt: React.ChangeEvent<unknown>,
+		_: React.ChangeEvent<unknown>,
 		page: number
 	): void => {
 		const params = new URLSearchParams(search);
-		console.log(evt);
+
 		if (params.has("page")) {
 			params.set("page", page.toString());
 		} else {
