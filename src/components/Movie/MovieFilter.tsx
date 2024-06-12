@@ -11,13 +11,10 @@ export default function MovieFilter() {
 	const [genres, setGenres] = useState<number[]>([]);
 	const handleClick = (id: number) => {
 		if (genres.includes(id)) {
-			console.log("filterout");
 			setGenres(prev => {
 				return prev.filter(item => item !== id);
 			});
 		} else {
-			console.log("inclues");
-
 			setGenres(prev => [...prev, id]);
 		}
 	};
@@ -36,7 +33,7 @@ export default function MovieFilter() {
 	}, []);
 
 	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-		console.log(evt);
+		evt.preventDefault();
 	};
 	return (
 		<div className="border rounded shadow-xl w-full md:w-[18rem] p-4 h-full">
@@ -63,7 +60,7 @@ export default function MovieFilter() {
 					<Button
 						disabled={genres.length === 0}
 						type="submit"
-						className="w-full rounded-full bg-teal-500 text-white hover:bg-teal-600">
+						className="w-full rounded-full bg-teal-500 text-white hover:bg-teal-600 disabled:bg-slate-500">
 						Search
 					</Button>
 				</div>
