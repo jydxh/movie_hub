@@ -8,7 +8,7 @@ async function fetchMovieList(
 	const res = await customFetch<MovieResultResponse>(
 		`/movie/${mode}?language=en-US&page=${page}`
 	);
-	console.log(res.data);
+	//console.log(res.data);
 	return res.data;
 }
 export default fetchMovieList;

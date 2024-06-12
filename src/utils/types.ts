@@ -221,3 +221,8 @@ export interface KnownForItem {
 	vote_count: number;
 	origin_country?: string[];
 }
+
+export interface Genre {
+	id: number;
+	name: string;
+}
