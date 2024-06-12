@@ -2,30 +2,23 @@ import { Form } from "react-router-dom";
 import fetchGenres from "@/api/fetchGenres";
 import { Genre } from "@/utils/types";
 import SelectableButton from "./SelectableButton";
-import { useEffect, useState } from "react";
-
-// export const loader: LoaderFunction = async (): Promise<null | Genre[]> => {
-// 	try {
-// 		const res = await fetchGenres();
-// 		return res;
-// 	} catch (error) {
-// 		console.log(error);
-// 		return null;
-// 	}
-// };
+import React, { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 
 export default function MovieFilter() {
 	const [data, setData] = useState<Genre[]>();
 	const [isLoading, setIsLoading] = useState(false);
 	const [genres, setGenres] = useState<number[]>([]);
 	const handleClick = (id: number) => {
-		const theIndex = genres.findIndex(item => item === id);
-		if (theIndex !== -1) {
-			setGenres(prev => [...prev, id]);
-		} else {
+		if (genres.includes(id)) {
+			console.log("filterout");
 			setGenres(prev => {
 				return prev.filter(item => item !== id);
 			});
+		} else {
+			console.log("inclues");
+
+			setGenres(prev => [...prev, id]);
 		}
 	};
 	useEffect(() => {
@@ -41,9 +34,13 @@ export default function MovieFilter() {
 		};
 		fetchData();
 	}, []);
+
+	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+		console.log(evt);
+	};
 	return (
 		<div className="border rounded shadow-xl w-full md:w-[18rem] p-4 h-full">
-			<Form method="GET">
+			<Form method="GET" onSubmit={handleSubmit}>
 				<div>
 					<label className="font-thin">Genres</label>
 					{data && (
@@ -61,6 +58,14 @@ export default function MovieFilter() {
 						</div>
 					)}
 					{isLoading && !data && <div> fetching data!</div>}
+				</div>
+				<div className="mt-8 flex justify-center">
+					<Button
+						disabled={genres.length === 0}
+						type="submit"
+						className="w-full rounded-full bg-teal-500 text-white hover:bg-teal-600">
+						Search
+					</Button>
 				</div>
 			</Form>
 		</div>
