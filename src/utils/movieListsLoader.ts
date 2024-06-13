@@ -7,11 +7,13 @@ function movieListsLoader(
 ): LoaderFunction {
 	return async ({ request }): Promise<MovieResultResponse | null> => {
 		const url = new URL(request.url);
-		const page = url.searchParams.get("page");
+
+		const searchParams = url.searchParams.get("with_genres");
+		console.log(searchParams);
 
 		try {
-			if (page) {
-				const res = await fetchMovieList(mode, page);
+			if (searchParams) {
+				const res = await fetchMovieList(mode, "1", searchParams);
 				return res;
 			} else {
 				const res = await fetchMovieList(mode);

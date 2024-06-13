@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
 function SelectableButton({
 	children,
 	onClick,
 	id,
+	genres,
 }: {
 	children: React.ReactNode;
 	onClick: (id: number) => void;
 	id: number;
+	genres: number[];
 }) {
-	const [selected, setSelected] = useState(false);
+	const handleClick = () => {
+		onClick(id);
+	};
+
 	return (
 		<button
 			type="button"
 			className={`${
-				selected ? "bg-teal-500 border-none" : ""
+				genres.includes(id) ? "bg-teal-500 border-none" : ""
 			} hover:bg-teal-500 hover:border-none rounded-full border px-3 py-1`}
-			onClick={() => {
-				setSelected(prev => !prev);
-				onClick(id);
-			}}>
+			onClick={handleClick}>
 			{children}
 		</button>
 	);

@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, useLocation, useNavigate } from "react-router-dom";
 import fetchGenres from "@/api/fetchGenres";
 import { Genre } from "@/utils/types";
 import SelectableButton from "./SelectableButton";
@@ -6,9 +6,16 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 
 export default function MovieFilter() {
+	const { pathname, search } = useLocation();
+
+	const queryParams = new URLSearchParams(search);
+	const intialGenres =
+		queryParams.get("with_genres")?.split(",").map(Number) || [];
 	const [data, setData] = useState<Genre[]>();
 	const [isLoading, setIsLoading] = useState(false);
-	const [genres, setGenres] = useState<number[]>([]);
+	const [genres, setGenres] = useState<number[]>(intialGenres);
+	const navigate = useNavigate();
+
 	const handleClick = (id: number) => {
 		if (genres.includes(id)) {
 			setGenres(prev => {
@@ -23,6 +30,7 @@ export default function MovieFilter() {
 			setIsLoading(true);
 			try {
 				const data = await fetchGenres();
+				console.log(data);
 				setData(data);
 			} catch (error) {
 				console.log(error);
@@ -34,6 +42,10 @@ export default function MovieFilter() {
 
 	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
 		evt.preventDefault();
+		console.log(location.pathname, location.search);
+		const with_genres = genres.join(",");
+
+		navigate(pathname + "?with_genres=" + with_genres);
 	};
 	return (
 		<div className="border rounded shadow-xl w-full md:w-[18rem] p-4 h-full">
@@ -47,7 +59,8 @@ export default function MovieFilter() {
 									<SelectableButton
 										onClick={handleClick}
 										key={item.id}
-										id={item.id}>
+										id={item.id}
+										genres={genres}>
 										{item.name}
 									</SelectableButton>
 								);
