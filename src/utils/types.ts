@@ -55,19 +55,34 @@ export interface TrendingAllResponse {
 export interface PeopleKnownFor {
 	backdrop_path: string;
 	id: number;
-	original_title: string;
+	original_name?: string;
 	overview: string;
 	poster_path: string;
-	media_type: string;
+	media_type: MediaType;
 	adult: boolean;
-	title: string;
-	original_language: string;
+	name?: string;
+	original_language: OriginalLanguage;
 	genre_ids: number[];
 	popularity: number;
-	release_date: string;
-	video: boolean;
+	first_air_date?: Date;
 	vote_average: number;
 	vote_count: number;
+	origin_country?: string[];
+	original_title?: string;
+	title?: string;
+	release_date?: Date;
+	video?: boolean;
+}
+export enum OriginalLanguage {
+	En = "en",
+	Es = "es",
+	Fr = "fr",
+	Th = "th",
+	Tr = "tr",
+}
+export enum MediaType {
+	Movie = "movie",
+	Tv = "tv",
 }
 
 // Trending People Response interface
@@ -220,6 +235,24 @@ export interface KnownForItem {
 	vote_average: number;
 	vote_count: number;
 	origin_country?: string[];
+}
+export interface PeopleListResponse {
+	page: number;
+	results: PeopleListResult[];
+	total_pages: number;
+	total_results: number;
+}
+
+export interface PeopleListResult {
+	adult: boolean;
+	gender: number;
+	id: number;
+	known_for_department: string;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: string;
+	known_for: KnownForItem[];
 }
 
 export interface Genre {
