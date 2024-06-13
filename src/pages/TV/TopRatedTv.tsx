@@ -1,6 +1,6 @@
-import useTvList from "@/hooks/useTvList";
+import useMediaList from "@/hooks/useMediaList";
 
 function TopRatedTv() {
-	return useTvList("Top Rated TV Shows");
+	return useMediaList("Top Rated TV Shows", "tv");
 }
 export default TopRatedTv;

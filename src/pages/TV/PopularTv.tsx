@@ -1,6 +1,6 @@
-import useTvList from "@/hooks/useTvList";
+import useMediaList from "@/hooks/useMediaList";
 
 function PopularTv() {
-	return useTvList("Popular TV Shows");
+	return useMediaList("Popular TV Shows", "tv");
 }
 export default PopularTv;

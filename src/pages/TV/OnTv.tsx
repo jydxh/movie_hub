@@ -1,6 +1,6 @@
-import useTvList from "@/hooks/useTvList";
+import useMediaList from "@/hooks/useMediaList";
 
 function OnTv() {
-	return useTvList("Currently Airing TV Shows");
+	return useMediaList("Currently Airing TV Shows", "tv");
 }
 export default OnTv;
