@@ -5,7 +5,7 @@ import SelectableButton from "@/components/Movie/SelectableButton";
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 
-function TvFilter() {
+function MediaFilter({ mode }: { mode: "movie" | "tv" }) {
 	const { pathname, search } = useLocation();
 
 	const queryParams = new URLSearchParams(search);
@@ -29,7 +29,7 @@ function TvFilter() {
 		const fetchData = async () => {
 			setIsLoading(true);
 			try {
-				const data = await fetchGenres({ mode: "tv" });
+				const data = await fetchGenres({ mode });
 				console.log(data);
 				setData(data);
 			} catch (error) {
@@ -81,4 +81,4 @@ function TvFilter() {
 		</div>
 	);
 }
-export default TvFilter;
+export default MediaFilter;

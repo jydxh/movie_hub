@@ -29,8 +29,8 @@ export default function MovieFilter() {
 		const fetchData = async () => {
 			setIsLoading(true);
 			try {
-				const data = await fetchGenres();
-				//	console.log(data);
+				const data = await fetchGenres({ mode: "movie" });
+				console.log(data);
 				setData(data);
 			} catch (error) {
 				console.log(error);

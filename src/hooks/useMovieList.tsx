@@ -4,7 +4,7 @@ import { Divider } from "@mui/material";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useLoaderData, useLocation } from "react-router";
 import fetchMovieList from "@/api/fetchMovieList";
-import MovieFilter from "@/components/Movie/MovieFilter";
+import MediaFilter from "@/components/ui/MediaFilter";
 
 const options = {
 	//root: null,
@@ -87,7 +87,7 @@ function useMovieList(title: string) {
 
 	return (
 		<div className="grid grid-cols-1 md:flex md:gap-x-4 py-8 px-4">
-			<MovieFilter />
+			<MediaFilter mode="movie" />
 			<div className="md:mt-0 mt-8 w-full">
 				<h2 className="font-semibold tracking-wide text-2xl mb-4 capitalize">
 					{title}
