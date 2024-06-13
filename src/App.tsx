@@ -9,7 +9,7 @@ import {
 	Login,
 	Register,
 	MovieLayout,
-	TvShow,
+	TvLayout,
 	People,
 	SingleMovie,
 	Search,
@@ -18,6 +18,8 @@ import {
 	PeopleSearch,
 	CollectionsSearch,
 	TVshowsSearch,
+	SingleTv,
+	SinglePerson,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -29,6 +31,10 @@ import PopularMovieWrapper from "./routes/PopularMovieWrapper";
 import PlayingMovieWrapper from "./routes/PlayingMovieWrapper";
 import UpcomingMovieWrapper from "./routes/UpcomingMovieWrapper";
 import TopRatedMovieWrapper from "./routes/TopRatedMovieWrapper";
+import ArrivingTvWrapper from "./routes/ArrivingTvWrapper";
+import OnTvWrapper from "./routes/OnTvWrapper";
+import PopularTvWrapper from "./routes/PopularTvWrapper";
+import TopRatedTvWrapper from "./routes/TopRatedTvWrapper";
 
 //const router = createBrowserRouter([
 const router = createHashRouter([
@@ -64,8 +70,19 @@ const router = createHashRouter([
 				],
 			},
 			{ path: "movie/:id", element: <SingleMovie /> },
-			{ path: "tvShow", element: <TvShow /> },
+			{
+				path: "tvShow",
+				element: <TvLayout />,
+				children: [
+					{ path: "popular", element: <PopularTvWrapper /> },
+					{ path: "arriving", element: <ArrivingTvWrapper /> },
+					{ path: "on_Tv", element: <OnTvWrapper /> },
+					{ path: "top_rated", element: <TopRatedTvWrapper /> },
+				],
+			},
+			{ path: "tvShow/:id", element: <SingleTv /> },
 			{ path: "people", element: <People /> },
+			{ path: "people/:id", element: <SinglePerson /> },
 			{
 				path: "search",
 				element: <Search />,

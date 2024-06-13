@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import Login from "./Login";
 import Register from "./Register";
 
-import TvShow from "./TvShow";
+import TvLayout from "./TvLayout";
 import People from "./People";
 import SingleMovie from "./SingleMovie";
 import Search from "./Search";
@@ -19,7 +19,12 @@ import PopularMovie from "./Movie/PopularMovie";
 import TopRatedMovie from "./Movie/TopRatedMovie";
 import UpcomingMovie from "./Movie/UpcomingMovie";
 
+import SinglePerson from "./SinglePerson";
+import SingleTv from "./SingleTv";
+
 export {
+	SingleTv,
+	SinglePerson,
 	UpcomingMovie,
 	TopRatedMovie,
 	PopularMovie,
@@ -29,7 +34,7 @@ export {
 	Layout,
 	Login,
 	Register,
-	TvShow,
+	TvLayout,
 	People,
 	SingleMovie,
 	Search,
