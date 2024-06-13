@@ -1,9 +1,6 @@
-import useMovieList from "@/hooks/useMovieList";
-import { useLocation } from "react-router";
+import useMediaList from "@/hooks/useMediaList";
 
 function PopularMovie() {
-	const { search } = useLocation();
-	console.log("serach from page", search);
-	return useMovieList("Popular Movies");
+	return useMediaList("Popular Movies", "movie");
 }
 export default PopularMovie;

@@ -25,6 +25,10 @@ function MediaFilter({ mode }: { mode: "movie" | "tv" }) {
 			setGenres(prev => [...prev, id]);
 		}
 	};
+
+	const handleReset = () => {
+		setGenres([]);
+	};
 	useEffect(() => {
 		const fetchData = async () => {
 			setIsLoading(true);
@@ -75,6 +79,15 @@ function MediaFilter({ mode }: { mode: "movie" | "tv" }) {
 						type="submit"
 						className="w-full rounded-full bg-teal-500 text-white hover:bg-teal-600 disabled:bg-slate-500">
 						Search
+					</Button>
+				</div>
+				<div className="mt-4 flex justify-center">
+					<Button
+						disabled={genres.length === 0}
+						type="button"
+						onClick={handleReset}
+						className="w-full rounded-full bg-emerald-500 text-white hover:bg-emerald-600 disabled:bg-slate-500">
+						Reset
 					</Button>
 				</div>
 			</Form>

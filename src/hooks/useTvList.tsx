@@ -3,7 +3,6 @@ import { TVResponse, TVResults } from "@/utils/types";
 import { Divider } from "@mui/material";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useLoaderData, useLocation } from "react-router";
-// import fetchMovieList from "@/api/fetchMovieList";
 import MediaFilter from "@/components/ui/MediaFilter";
 import fetchTvList from "@/api/fetchTvList";
 

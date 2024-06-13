@@ -1,9 +1,15 @@
 import MovieListCard from "@/components/Movie/MovieListCard";
-import { MovieResultResponse, MovieResult } from "@/utils/types";
+import {
+	MovieListResult,
+	TvListResult,
+	TvListResponse,
+	MovieListResponse,
+} from "@/utils/types";
 import { Divider } from "@mui/material";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useLoaderData, useLocation } from "react-router";
 import fetchMovieList from "@/api/fetchMovieList";
+import fetchTvList from "@/api/fetchTvList";
 import MediaFilter from "@/components/ui/MediaFilter";
 
 const options = {
@@ -12,18 +18,19 @@ const options = {
 	threshold: 0.1,
 };
 
-function useMovieList(title: string) {
+function useMediaList(title: string, mode: "tv" | "movie") {
 	const {
 		results: initalResults,
 		total_results,
 		total_pages,
-	} = useLoaderData() as MovieResultResponse;
+	} = useLoaderData() as MovieListResponse | TvListResponse;
 	const { pathname, search } = useLocation();
 
 	const searchParams = new URLSearchParams(search);
 	const query = searchParams.get("with_genres") || undefined;
 
-	const [results, setResults] = useState<MovieResult[]>(initalResults);
+	const [results, setResults] =
+		useState<(MovieListResult | TvListResult)[]>(initalResults);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isLastPage, setIsLastPage] = useState(false);
 	const divRef = useRef<HTMLDivElement | null>(null);
@@ -37,20 +44,41 @@ function useMovieList(title: string) {
 	/* the fetchData funtion for the infinity fetching  */
 	const fetchData = useCallback(
 		async (page: number) => {
-			let params: "popular" | "now_playing" | "upcoming" | "top_rated" =
+			let movieParams: "popular" | "now_playing" | "upcoming" | "top_rated" =
 				"popular";
-			if (pathname.includes("playing")) params = "now_playing";
-			if (pathname.includes("upcoming")) params = "upcoming";
-			if (pathname.includes("top_rated")) params = "top_rated";
+			if (pathname.includes("playing")) movieParams = "now_playing";
+			if (pathname.includes("upcoming")) movieParams = "upcoming";
+			if (pathname.includes("top_rated")) movieParams = "top_rated";
+
+			let tvParams: "popular" | "arriving" | "on_Tv" | "top_rated" = "popular";
+			if (pathname.includes("arriving")) tvParams = "arriving";
+			if (pathname.includes("on_Tv")) tvParams = "on_Tv";
+			if (pathname.includes("top_rated")) tvParams = "top_rated";
 			setIsLoading(true);
-			const { results } = await fetchMovieList(params, page.toString(), query);
-			setResults(prev => [
-				...prev,
-				...results,
-			]); /* get the fetched data and insert into results state */
+
+			if (mode === "movie") {
+				const { results } = await fetchMovieList(
+					movieParams,
+					page.toString(),
+					query
+				);
+				setResults(prev => [
+					...prev,
+					...(results as MovieListResult[]),
+				]); /* get the fetched data and insert into results state */
+			}
+
+			if (mode === "tv") {
+				const { results } = await fetchTvList(tvParams, page.toString(), query);
+				setResults(prev => [
+					...prev,
+					...results,
+				]); /* get the fetched data and insert into results state */
+			}
+
 			setIsLoading(false);
 		},
-		[pathname, query]
+		[pathname, query, mode]
 	);
 
 	const ObserverCallBack = useCallback(
@@ -97,17 +125,31 @@ function useMovieList(title: string) {
 				<div className="mt-4">
 					<ul className="grid grid-cols-1 sm:grid-cols-2 md:place-content-center md:flex md:flex-wrap gap-6">
 						{results.map(result => {
-							const { id, poster_path, release_date, title, vote_average } =
-								result;
-							return (
-								<MovieListCard
-									key={id + Math.random()}
-									imgPath={poster_path}
-									title={title}
-									release_date={release_date}
-									vote_average={vote_average}
-								/>
-							);
+							if (Object.prototype.hasOwnProperty.call(result, "title")) {
+								const { id, poster_path, release_date, title, vote_average } =
+									result as MovieListResult;
+								return (
+									<MovieListCard
+										key={id + Math.random()}
+										imgPath={poster_path}
+										title={title}
+										release_date={release_date}
+										vote_average={vote_average}
+									/>
+								);
+							} else if (Object.prototype.hasOwnProperty.call(result, "name")) {
+								const { id, poster_path, vote_average, name, first_air_date } =
+									result as TvListResult;
+								return (
+									<MovieListCard
+										key={id + Math.random()}
+										imgPath={poster_path}
+										title={name}
+										release_date={first_air_date}
+										vote_average={vote_average}
+									/>
+								);
+							}
 						})}
 					</ul>
 
@@ -135,4 +177,4 @@ function useMovieList(title: string) {
 		</div>
 	);
 }
-export default useMovieList;
+export default useMediaList;

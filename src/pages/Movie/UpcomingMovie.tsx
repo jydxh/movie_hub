@@ -1,6 +1,6 @@
-import useMovieList from "@/hooks/useMovieList";
+import useMediaList from "@/hooks/useMediaList";
 
 function UpcomingMovie() {
-	return useMovieList("upcoming movies");
+	return useMediaList("upcoming movies", "movie");
 }
 export default UpcomingMovie;
