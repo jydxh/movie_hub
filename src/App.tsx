@@ -18,10 +18,6 @@ import {
 	PeopleSearch,
 	CollectionsSearch,
 	TVshowsSearch,
-	PopularMovie,
-	PlayingMovie,
-	UpcomingMovie,
-	TopRatedMovie,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -29,6 +25,10 @@ import { action as RegisterAction } from "@/pages/Register";
 
 import multiSearchLoader from "@/utils/multiSearchLoader";
 import movieListsLoader from "./utils/movieListsLoader";
+import PopularMovieWrapper from "./routes/PopularMovieWrapper";
+import PlayingMovieWrapper from "./routes/PlayingMovieWrapper";
+import UpcomingMovieWrapper from "./routes/UpcomingMovieWrapper";
+import TopRatedMovieWrapper from "./routes/TopRatedMovieWrapper";
 
 //const router = createBrowserRouter([
 const router = createHashRouter([
@@ -43,22 +43,22 @@ const router = createHashRouter([
 				children: [
 					{
 						path: "popular",
-						element: <PopularMovie />,
+						element: <PopularMovieWrapper />,
 						loader: movieListsLoader("popular"),
 					},
 					{
 						path: "playing",
-						element: <PlayingMovie />,
+						element: <PlayingMovieWrapper />,
 						loader: movieListsLoader("now_playing"),
 					},
 					{
 						path: "upcoming",
-						element: <UpcomingMovie />,
+						element: <UpcomingMovieWrapper />,
 						loader: movieListsLoader("upcoming"),
 					},
 					{
 						path: "top_rated",
-						element: <TopRatedMovie />,
+						element: <TopRatedMovieWrapper />,
 						loader: movieListsLoader("top_rated"),
 					},
 				],
