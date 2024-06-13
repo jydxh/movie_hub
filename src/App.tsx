@@ -20,6 +20,7 @@ import {
 	TVshowsSearch,
 	SingleTv,
 	SinglePerson,
+	MovieHome,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -35,7 +36,8 @@ import ArrivingTvWrapper from "./routes/ArrivingTvWrapper";
 import OnTvWrapper from "./routes/OnTvWrapper";
 import PopularTvWrapper from "./routes/PopularTvWrapper";
 import TopRatedTvWrapper from "./routes/TopRatedTvWrapper";
-
+import { loader as MovieHomeLoader } from "@/pages/Movie/MovieHome";
+import TvHome, { loader as TvHomeLoader } from "@/pages/TV/TvHome";
 //const router = createBrowserRouter([
 const router = createHashRouter([
 	{
@@ -47,6 +49,7 @@ const router = createHashRouter([
 				path: "movie",
 				element: <MovieLayout />,
 				children: [
+					{ index: true, element: <MovieHome />, loader: MovieHomeLoader },
 					{
 						path: "popular",
 						element: <PopularMovieWrapper />,
@@ -74,6 +77,7 @@ const router = createHashRouter([
 				path: "tv_show",
 				element: <TvLayout />,
 				children: [
+					{ index: true, element: <TvHome />, loader: TvHomeLoader },
 					{ path: "popular", element: <PopularTvWrapper /> },
 					{ path: "arriving", element: <ArrivingTvWrapper /> },
 					{ path: "on_Tv", element: <OnTvWrapper /> },

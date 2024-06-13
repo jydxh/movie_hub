@@ -14,10 +14,6 @@ function MovieLayout() {
 		<div>
 			<SubNavbar list={movieSubList} />
 			<Outlet />
-			{/* 	<div className="grid grid-cols-1 md:flex md:gap-x-4 py-8 px-4">
-				<MovieFilter />
-				<Outlet />
-			</div> */}
 		</div>
 	);
 }

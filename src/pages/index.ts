@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import Login from "./Login";
 import Register from "./Register";
 
-import TvLayout from "./TvLayout";
+import TvLayout from "./TV/TvLayout";
 import People from "./People";
 import SingleMovie from "./SingleMovie";
 import Search from "./Search";
@@ -21,8 +21,12 @@ import UpcomingMovie from "./Movie/UpcomingMovie";
 
 import SinglePerson from "./SinglePerson";
 import SingleTv from "./SingleTv";
+import MovieHome from "./Movie/MovieHome";
+import TvHome from "./TV/TvHome";
 
 export {
+	TvHome,
+	MovieHome,
 	SingleTv,
 	SinglePerson,
 	UpcomingMovie,
