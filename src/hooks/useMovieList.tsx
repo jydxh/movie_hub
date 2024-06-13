@@ -126,7 +126,7 @@ function useMovieList(title: string) {
 						</div>
 					)}
 					{isLastPage && !isLoading && total_pages !== 1 && (
-						<div className="font-bold mx-auto text-center text-xl w-full bg-cyan-500 p-2 mt-8 rounded-lg">
+						<div className="font-bold mx-auto text-center text-xl w-full bg-cyan-500 p-2 mt-8 rounded-lg cursor-pointer">
 							End of the List
 						</div>
 					)}
