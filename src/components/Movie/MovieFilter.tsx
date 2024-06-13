@@ -30,7 +30,7 @@ export default function MovieFilter() {
 			setIsLoading(true);
 			try {
 				const data = await fetchGenres();
-				console.log(data);
+				//	console.log(data);
 				setData(data);
 			} catch (error) {
 				console.log(error);
@@ -42,7 +42,7 @@ export default function MovieFilter() {
 
 	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
 		evt.preventDefault();
-		console.log(location.pathname, location.search);
+
 		const with_genres = genres.join(",");
 
 		navigate(pathname + "?with_genres=" + with_genres);

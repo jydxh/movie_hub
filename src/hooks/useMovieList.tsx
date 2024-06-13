@@ -9,7 +9,7 @@ import MovieFilter from "@/components/Movie/MovieFilter";
 const options = {
 	//root: null,
 	rootMargin: "200px",
-	threshold: 0.5,
+	threshold: 0.1,
 };
 
 function useMovieList(title: string) {
@@ -18,7 +18,10 @@ function useMovieList(title: string) {
 		total_results,
 		total_pages,
 	} = useLoaderData() as MovieResultResponse;
-	const { pathname } = useLocation(); // /movie/popular, playing, upcoming, top_rated
+	const { pathname, search } = useLocation(); // /movie/popular, playing, upcoming, top_rated
+
+	const searchParams = new URLSearchParams(search);
+	const query = searchParams.get("with_genres") || undefined;
 
 	const [results, setResults] = useState<MovieResult[]>(initalResults);
 	const [isLoading, setIsLoading] = useState(false);
@@ -40,30 +43,30 @@ function useMovieList(title: string) {
 			if (pathname.includes("upcoming")) params = "upcoming";
 			if (pathname.includes("top_rated")) params = "top_rated";
 			setIsLoading(true);
-			const { results } = await fetchMovieList(params, page.toString());
+			const { results } = await fetchMovieList(params, page.toString(), query);
 			setResults(prev => [
 				...prev,
 				...results,
 			]); /* get the fetched data and insert into results state */
 			setIsLoading(false);
 		},
-		[pathname]
+		[pathname, query]
 	);
 
 	const ObserverCallBack = useCallback(
 		/*  This callback is triggered when an intersection occurs between the observed element and the root element, as defined by the IntersectionObserver's options.*/
 		(entries: IntersectionObserverEntry[]) => {
 			const target = entries[0];
-			if (target.isIntersecting && !isLoading) {
-				if (pageRef.current === total_pages) {
+			if (target.isIntersecting && !isLoading && !isLastPage) {
+				if (pageRef.current <= total_pages) {
+					fetchData(pageRef.current);
+					pageRef.current++;
+				} else {
 					setIsLastPage(true);
-					return;
 				}
-				pageRef.current++;
-				fetchData(pageRef.current);
 			}
 		},
-		[isLoading, total_pages, fetchData]
+		[isLoading, total_pages, fetchData, isLastPage]
 	);
 
 	useEffect(() => {
@@ -113,7 +116,7 @@ function useMovieList(title: string) {
 						className="mx-auto mt-8 text-center font-serif text-xl">
 						{isLoading && <p>Loading more items...</p>}
 					</div>
-					{!isInfiniteScrollEnabled && (
+					{!isInfiniteScrollEnabled && total_pages !== 1 && (
 						<div>
 							<button
 								onClick={handleLoadMore}
@@ -122,7 +125,7 @@ function useMovieList(title: string) {
 							</button>
 						</div>
 					)}
-					{isLastPage && (
+					{isLastPage && !isLoading && total_pages !== 1 && (
 						<div className="font-bold mx-auto text-center text-xl w-full bg-cyan-500 p-2 mt-8 rounded-lg">
 							End of the List
 						</div>
