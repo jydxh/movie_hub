@@ -1,4 +1,6 @@
+import useTvList from "@/hooks/useTvList";
+
 function PopularTv() {
-	return <div>PopularTv</div>;
+	return useTvList("Popular TV Shows");
 }
 export default PopularTv;

@@ -1,7 +1,8 @@
+import TopRatedTv from "@/pages/TV/TopRatedTv";
 import { useLocation } from "react-router";
 
 function TopRatedTvWrapper() {
 	const { search } = useLocation();
-	return <div>TopRatedTvWrapper</div>;
+	return <TopRatedTv key={search} />;
 }
 export default TopRatedTvWrapper;

@@ -38,6 +38,8 @@ import PopularTvWrapper from "./routes/PopularTvWrapper";
 import TopRatedTvWrapper from "./routes/TopRatedTvWrapper";
 import { loader as MovieHomeLoader } from "@/pages/Movie/MovieHome";
 import TvHome, { loader as TvHomeLoader } from "@/pages/TV/TvHome";
+import tvListsLoader from "./utils/tvListsLoader";
+
 //const router = createBrowserRouter([
 const router = createHashRouter([
 	{
@@ -78,10 +80,26 @@ const router = createHashRouter([
 				element: <TvLayout />,
 				children: [
 					{ index: true, element: <TvHome />, loader: TvHomeLoader },
-					{ path: "popular", element: <PopularTvWrapper /> },
-					{ path: "arriving", element: <ArrivingTvWrapper /> },
-					{ path: "on_Tv", element: <OnTvWrapper /> },
-					{ path: "top_rated", element: <TopRatedTvWrapper /> },
+					{
+						path: "popular",
+						element: <PopularTvWrapper />,
+						loader: tvListsLoader("popular"),
+					},
+					{
+						path: "arriving",
+						element: <ArrivingTvWrapper />,
+						loader: tvListsLoader("arriving"),
+					},
+					{
+						path: "on_Tv",
+						element: <OnTvWrapper />,
+						loader: tvListsLoader("on_Tv"),
+					},
+					{
+						path: "top_rated",
+						element: <TopRatedTvWrapper />,
+						loader: tvListsLoader("top_rated"),
+					},
 				],
 			},
 			{ path: "tvShow/:id", element: <SingleTv /> },

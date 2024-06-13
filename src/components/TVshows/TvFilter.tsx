@@ -1,11 +1,11 @@
 import { Form, useLocation, useNavigate } from "react-router-dom";
-import fetchGenres from "@/api/fetchGenres";
+import fetchTVGenres from "@/api/fetchTVGenres";
 import { Genre } from "@/utils/types";
 import SelectableButton from "@/components/Movie/SelectableButton";
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 
-export default function MovieFilter() {
+function TvFilter() {
 	const { pathname, search } = useLocation();
 
 	const queryParams = new URLSearchParams(search);
@@ -29,7 +29,7 @@ export default function MovieFilter() {
 		const fetchData = async () => {
 			setIsLoading(true);
 			try {
-				const data = await fetchGenres();
+				const data = await fetchTVGenres();
 				//	console.log(data);
 				setData(data);
 			} catch (error) {
@@ -81,3 +81,4 @@ export default function MovieFilter() {
 		</div>
 	);
 }
+export default TvFilter;

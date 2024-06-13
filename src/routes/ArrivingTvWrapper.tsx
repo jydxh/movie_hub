@@ -1,7 +1,8 @@
+import ArrivingTv from "@/pages/TV/ArrivingTv";
 import { useLocation } from "react-router";
 
 function ArrivingTvWrapper() {
 	const { search } = useLocation();
-	return <div>ArrivingTvWrapper</div>;
+	return <ArrivingTv key={search} />;
 }
 export default ArrivingTvWrapper;
