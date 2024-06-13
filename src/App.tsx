@@ -71,7 +71,7 @@ const router = createHashRouter([
 			},
 			{ path: "movie/:id", element: <SingleMovie /> },
 			{
-				path: "tvShow",
+				path: "tv_show",
 				element: <TvLayout />,
 				children: [
 					{ path: "popular", element: <PopularTvWrapper /> },

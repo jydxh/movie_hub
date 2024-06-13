@@ -36,7 +36,9 @@ function NavList() {
 					const { name, to } = link;
 					return (
 						<MenuItem key={name} onClick={handleClose}>
-							<Link to={to}>{name}</Link>
+							<Link className="capitalize" to={to}>
+								{name}
+							</Link>
 						</MenuItem>
 					);
 				})}

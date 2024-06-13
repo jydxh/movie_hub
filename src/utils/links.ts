@@ -1,5 +1,5 @@
 export const links = [
-	{ name: "movie", to: "/movie/popular" },
-	{ name: "TV Shows", to: "/tvShow" },
-	{ name: "people", to: "/people" },
+	{ name: "Movie", to: "/movie/popular" },
+	{ name: "TV Shows", to: "/tv_show" },
+	{ name: "People", to: "/people" },
 ];
