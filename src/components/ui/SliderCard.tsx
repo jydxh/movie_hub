@@ -2,6 +2,7 @@ import formateDate from "@/utils/formateDate";
 import { baseImgUrl } from "@/utils/types";
 import { TrendingAllResult, MovieResult } from "@/utils/types";
 import RatingCircle from "./RatingCircle";
+import { Link } from "react-router-dom";
 export interface SliderCardProps {
 	data: TrendingAllResult[] | MovieResult[];
 }
@@ -21,16 +22,18 @@ export function SliderCard({ data }: SliderCardProps) {
 				} = item;
 				return (
 					<div className="w-[10rem] h-[24rem] mt-4 flex-shrink-0" key={id}>
-						<img
-							src={`${baseImgUrl}/original/${poster_path}`}
-							alt={title}
-							className="w-[10rem] rounded-md shadow-lg"
-						/>
-						<RatingCircle value={vote_average} />
-						<p className="line-clamp-2">{title || name}</p>
-						<p className="mt-4 font-light text-gray-500">
-							{formateDate(release_date) || formateDate(first_air_date)}
-						</p>
+						<Link to={`${release_date ? `/movie/${id}` : `/tv_show/${id}`}`}>
+							<img
+								src={`${baseImgUrl}/original/${poster_path}`}
+								alt={title}
+								className="w-[10rem] rounded-md shadow-lg"
+							/>
+							<RatingCircle value={vote_average} />
+							<p className="line-clamp-2">{title || name}</p>
+							<p className="mt-4 font-light text-gray-500">
+								{formateDate(release_date) || formateDate(first_air_date)}
+							</p>
+						</Link>
 					</div>
 				);
 			})}

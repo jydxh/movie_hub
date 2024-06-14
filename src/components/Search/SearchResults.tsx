@@ -25,7 +25,9 @@ function SearchResults({
 					const { id, overview, poster_path, release_date, title } = result;
 					return (
 						<SearchContentCard
+							type="movie"
 							key={id}
+							id={id}
 							overview={overview}
 							poster={poster_path}
 							release_date={release_date}
@@ -43,6 +45,7 @@ function SearchResults({
 					} = result;
 					return (
 						<SearchPeopleCard
+							id={id}
 							key={id}
 							poster={profile_path}
 							name={name}
@@ -58,6 +61,8 @@ function SearchResults({
 					return (
 						<SearchContentCard
 							key={id}
+							id={id}
+							type="tv"
 							overview={overview}
 							poster={poster_path}
 							release_date={first_air_date}

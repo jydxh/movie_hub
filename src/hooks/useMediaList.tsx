@@ -130,6 +130,8 @@ function useMediaList(title: string, mode: "tv" | "movie") {
 									result as MovieListResult;
 								return (
 									<MovieListCard
+										type="movie"
+										id={id}
 										key={id + Math.random()}
 										imgPath={poster_path}
 										title={title}
@@ -142,6 +144,8 @@ function useMediaList(title: string, mode: "tv" | "movie") {
 									result as TvListResult;
 								return (
 									<MovieListCard
+										type="tv"
+										id={id}
 										key={id + Math.random()}
 										imgPath={poster_path}
 										title={name}

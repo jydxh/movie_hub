@@ -103,7 +103,7 @@ const router = createHashRouter([
 					},
 				],
 			},
-			{ path: "tvShow/:id", element: <SingleTv /> },
+			{ path: "tv_show/:id", element: <SingleTv /> },
 			{ path: "people", element: <People />, loader: PopularPeopleLoader },
 			{ path: "people/:id", element: <SinglePerson /> },
 			{
