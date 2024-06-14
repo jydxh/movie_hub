@@ -8,7 +8,7 @@ type SearchContentProps = {
 	release_date?: string;
 	overview: string;
 	id: number;
-	type: "tv" | "movie";
+	type: "tv" | "movie" | "collection";
 };
 
 function SearchContentCard({
@@ -20,7 +20,12 @@ function SearchContentCard({
 	id,
 }: SearchContentProps) {
 	return (
-		<Link to={`${type === "movie" ? `/movie/${id}` : `/tv_show/${id}`}`}>
+		<Link
+			to={`${
+				type === "movie"
+					? `/movie/${id}`
+					: `${type === "collection" ? "/" : `/tv_show/${id}`}`
+			}`}>
 			<div className="w-full mt-4 md:mt-0 pe-4 shadow-lg border rounded-lg border-gray-300 flex mb-6 gap-x-6">
 				<div className="flex-shrink-0">
 					{poster ? (

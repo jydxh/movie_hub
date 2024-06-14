@@ -14,7 +14,9 @@ function CollectionsSearch() {
 					const { poster_path, name, overview, id } = result;
 					return (
 						<SearchContentCard
+							type="collection"
 							key={id}
+							id={id}
 							overview={overview}
 							poster={poster_path}
 							title={name}
