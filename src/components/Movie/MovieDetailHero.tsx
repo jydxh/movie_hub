@@ -29,6 +29,10 @@ function MovieDetailHero() {
 			overview,
 			status,
 			budget,
+			revenue,
+			production_companies,
+			original_language,
+			popularity,
 		} = data as MovieDetailResponse;
 		console.log(data);
 		return (
@@ -58,7 +62,7 @@ function MovieDetailHero() {
 									<span>{release_date}</span>
 									<span>&nbsp;/&nbsp;</span>
 									{genres.map((item, index) => (
-										<span>
+										<span key={item.id}>
 											{item.name}
 											{index === genres.length - 1 ? "" : ", "}
 										</span>
@@ -89,20 +93,20 @@ function MovieDetailHero() {
 										<p>{formatDollars(budget)}</p>
 									</div>
 									<div>
-										<p className="font-semibold">Status</p>
-										<p>{status}</p>
+										<p className="font-semibold">Revenue</p>
+										<p>{formatDollars(revenue)}</p>
 									</div>
 									<div>
-										<p className="font-semibold">Status</p>
-										<p>{status}</p>
+										<p className="font-semibold">Company</p>
+										<p>{production_companies[0].name}</p>
 									</div>
 									<div>
-										<p className="font-semibold">Status</p>
-										<p>{status}</p>
+										<p className="font-semibold ">Original Language</p>
+										<p className="uppercase">{original_language}</p>
 									</div>
 									<div>
-										<p className="font-semibold">Status</p>
-										<p>{status}</p>
+										<p className="font-semibold">Popularity</p>
+										<p>{popularity}</p>
 									</div>
 								</section>
 							</div>
