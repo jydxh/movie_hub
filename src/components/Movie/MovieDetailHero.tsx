@@ -83,7 +83,7 @@ function MovieDetailHero() {
 									<h3 className="text-xl font-semibold">Overview</h3>
 									<article>{overview}</article>
 								</div>
-								<section className="mt-8 grid grid-cols-3 gap-y-8">
+								<section className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-y-8">
 									<div>
 										<p className="font-semibold">Status</p>
 										<p>{status}</p>
