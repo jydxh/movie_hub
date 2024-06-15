@@ -100,6 +100,8 @@ function useTvList(title: string) {
 								result;
 							return (
 								<MovieListCard
+									id={id}
+									type="tv"
 									key={id + Math.random()}
 									imgPath={poster_path}
 									title={name}
