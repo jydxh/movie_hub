@@ -8,6 +8,7 @@ import Footer from "@/components/HomeLayout/Footer";
 import { Button } from "@mui/material";
 import { store } from "@/store";
 import { logout } from "@/feature/User/userSlice";
+import { ScrollRestoration } from "react-router-dom";
 
 function Layout() {
 	const username = store.getState().user.username;
@@ -63,6 +64,12 @@ function Layout() {
 
 			<main className="max-w-[1400px] mx-auto ">
 				<Outlet />
+				<ScrollRestoration
+					getKey={location => {
+						// default behavior
+						return location.pathname;
+					}}
+				/>
 			</main>
 			<Footer />
 		</>

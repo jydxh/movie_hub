@@ -21,7 +21,9 @@ function MovieListCard({
 }: MovieListCardProps) {
 	return (
 		<li className="mx-auto rounded-lg md:w-[12rem] w-[80%] border border-gray-200 shadow-lg flex flex-col justify-start items-start">
-			<Link to={`${type === "movie" ? `/movie/${id}` : `/tv_show/${id}`}`}>
+			<Link
+				preventScrollReset={true}
+				to={`${type === "movie" ? `/movie/${id}` : `/tv_show/${id}`}`}>
 				<img
 					src={`https://media.themoviedb.org/t/p/w440_and_h660_face${imgPath}`}
 					alt={title}
