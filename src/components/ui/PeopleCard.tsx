@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 function PeopleCard({ result }: { result: PeopleListResult }) {
 	const { name, profile_path, known_for, id } = result;
 	return (
-		<div className="rounded-xl w-full h-[22rem]  border shadow-xl pb-2 ">
+		<div className="rounded-xl w-full h-[24rem]  border shadow-xl pb-2 ">
 			<Link to={id.toString()}>
 				<img
 					src={`https://media.themoviedb.org/t/p/w470_and_h470_face${profile_path}`}
 					alt={name}
-					className="block rounded-t-xl"
+					className="block rounded-t-xl max-h-[18rem] w-full object-cover"
 				/>
 				<p className="px-2 pt-1 text-lg font-medium">{name}</p>
 			</Link>

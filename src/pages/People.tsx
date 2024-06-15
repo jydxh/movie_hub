@@ -1,7 +1,7 @@
 import fetchPopularPeople from "@/api/fetchPopularPeople";
 import PeopleCard from "@/components/ui/PeopleCard";
 import { PeopleListResponse } from "@/utils/types";
-import { Pagination } from "@mui/material";
+import { Divider, Pagination } from "@mui/material";
 import {
 	LoaderFunction,
 	useLoaderData,
@@ -40,6 +40,7 @@ function People() {
 	return (
 		<div className="p-8">
 			<h1 className="text-2xl tracking-wide font-bold">Popular People</h1>
+			<Divider className="my-8" />
 			<ul className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">
 				{results.map(result => (
 					<li key={result.id} className="w-full ">
@@ -47,7 +48,7 @@ function People() {
 					</li>
 				))}
 			</ul>
-			<div className=" mt-8 mx-auto flex justify-center">
+			<div className="mt-8 mx-auto flex justify-center">
 				<Pagination
 					variant="outlined"
 					shape="rounded"
