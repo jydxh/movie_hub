@@ -1,29 +1,29 @@
 function backgroundColor(id?: string) {
 	let bgColor;
 	if (!id) {
-		return (bgColor = "bg-gray-500");
+		return (bgColor = "bg-gray-950");
 	}
 	const idReminder = Number(id) % 10;
 	bgColor =
 		idReminder === 0
-			? "bg-blue-500"
+			? "bg-blue-950"
 			: idReminder === 1
-			? "bg-gray-500"
+			? "bg-gray-950"
 			: idReminder === 2
-			? "bg-orange-500"
+			? "bg-orange-950"
 			: idReminder === 3
-			? "bg-slate-500"
+			? "bg-slate-950"
 			: idReminder === 4
-			? "bg-amber-500"
+			? "bg-amber-950"
 			: idReminder === 5
-			? "bg-yellow-500"
+			? "bg-yellow-950"
 			: idReminder === 6
-			? "bg-emerald-500"
+			? "bg-emerald-950"
 			: idReminder === 7
-			? "bg-teal-500"
+			? "bg-teal-950"
 			: idReminder === 8
-			? "bg-cyan-500"
-			: "bg-sky-500";
+			? "bg-cyan-950"
+			: "bg-sky-950";
 	return bgColor;
 }
 export default backgroundColor;
