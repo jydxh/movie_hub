@@ -34,20 +34,22 @@ function MovieDetailHero() {
 			original_language,
 			popularity,
 		} = data as MovieDetailResponse;
-		console.log(data);
+		//console.log(data);
 		return (
 			<>
 				<div className="relative">
 					<div
-						className="h-[80rem] md:h-[32rem]"
+						// className="h-[80rem] md:h-[32rem]"
+						className="absolute top-0 left-0 w-full h-full"
 						style={{
 							backgroundImage: `url(${baseImgUrl}/w1920_and_h800_multi_faces/${backdrop_path})`,
 							backgroundPosition: "center",
 							backgroundRepeat: "repeat-x",
+							backgroundSize: "cover",
 						}}></div>
 					<div
-						className={`${bgColor} w-full md:h-[32rem] h-[80rem] opacity-90 absolute top-0 left-0`}></div>
-					<div className="absolute top-0 left-0 p-8 w-full">
+						className={`${bgColor} w-full h-full opacity-90 absolute top-0 left-0`}></div>
+					<div className="relative p-8 w-full">
 						<div className="md:flex grid grid-cols-1 md:gap-x-4">
 							<div className="flex md:justify-start justify-center w-full md:w-[19rem] flex-shrink-0">
 								<img
