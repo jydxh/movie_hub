@@ -1,9 +1,9 @@
 import { customFetch } from "../customFetch";
 import { MovieDetailResponse } from "@/utils/types";
-async function fetchMovieDetails({ id }: { id: string }) {
+async function fetchMovieDetails({ id = "271110" }: { id?: string }) {
 	const res = await customFetch<MovieDetailResponse>(
 		`/movie/${id}?language=en-US`
 	);
-	return res;
+	return res.data;
 }
 export default fetchMovieDetails;

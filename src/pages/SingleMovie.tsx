@@ -1,8 +1,17 @@
-import { useParams } from "react-router-dom";
-
+import MovieDetailHero from "@/components/Movie/MovieDetailHero";
+import CastList from "@/components/ui/CastList";
+import MediaReview from "@/components/ui/MediaReview";
+import MediaPoster from "@/components/ui/MediaPoster";
+import MediaRecommendation from "@/components/ui/MediaRecommendation";
 function SingleMovie() {
-	const { id } = useParams();
-	console.log(id);
-	return <div>SingleMovie</div>;
+	return (
+		<>
+			<MovieDetailHero />
+			<CastList />
+			<MediaReview />
+			<MediaPoster />
+			<MediaRecommendation />
+		</>
+	);
 }
 export default SingleMovie;
