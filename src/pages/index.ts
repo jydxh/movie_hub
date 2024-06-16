@@ -25,8 +25,9 @@ import MovieHome from "./Movie/MovieHome";
 import TvHome from "./TV/TvHome";
 
 import MovieCast from "./Movie/MovieCast";
-
+import MovieReviews from "./Movie/MovieReviews";
 export {
+	MovieReviews,
 	MovieCast,
 	TvHome,
 	MovieHome,

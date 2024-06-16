@@ -22,6 +22,7 @@ import {
 	SinglePerson,
 	MovieHome,
 	MovieCast,
+	MovieReviews,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -81,6 +82,7 @@ const router = createHashRouter([
 				element: <SingleMovie />,
 			},
 			{ path: "movie/:id/cast", element: <MovieCast /> },
+			{ path: "movie/:id/reviews", element: <MovieReviews /> },
 			{
 				path: "tv_show",
 				element: <TvLayout />,

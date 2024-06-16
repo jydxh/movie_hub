@@ -33,7 +33,7 @@ function SingleMovie() {
 				<MovieDetailHero data={data} />
 				<CastList data={data.credits} />
 				<Divider className="mt-2" />
-				<MediaReview data={data.reviews} />
+				<MediaReview data={data.reviews} id={id} />
 				<Divider className="mt-2" />
 				<MediaPoster />
 				<Divider className="mt-2" />
