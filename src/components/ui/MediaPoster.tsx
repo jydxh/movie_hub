@@ -1,14 +1,26 @@
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
+import { MovieImages, baseImgUrl } from "@/utils/types";
+import { useState } from "react";
 
 import fetchMovieCustom from "@/api/MovieApi/fetchMovieCustom";
 function MediaPoster() {
 	const { id } = useParams();
+	const [show, setShow] = useState<"backdrop" | "poster">("backdrop");
 	const { data, error, isPending, isError } = useQuery({
 		queryKey: ["MovieImages", id],
 		queryFn: () => fetchMovieCustom({ id, mode: "images" }),
 		staleTime: 5 * 60 * 1000 /* 5 minnutes  */,
 	});
+	/* useEffect(() => {
+		console.log(data);
+	}, [data]); */ // Only log when 'data' changes
+	const handleBackDrop = () => {
+		setShow("backdrop");
+	};
+	const handlePoster = () => {
+		setShow("poster");
+	};
 	if (isError) {
 		<p className="mx-auto text-center text-xl">Error: {error.message}</p>;
 	}
@@ -16,8 +28,74 @@ function MediaPoster() {
 		<p className="mx-auto text-center text-xl">...Loading...</p>;
 	}
 	if (data) {
-		console.log(data);
-		return <div>MediaPoster</div>;
+		const { backdrops, posters } = data as MovieImages;
+		return (
+			<section className="p-4">
+				<div className="flex justify-start items-end gap-x-16">
+					<h4 className="text-xl font-semibold">Media</h4>
+					<div className="flex items-end justify-center gap-x-8">
+						<button
+							onClick={handleBackDrop}
+							className={`${
+								show === "backdrop" ? "" : "border-b-transparent"
+							} border-b-2 font-semibold`}>
+							Backdrops <span className="font-thin">{backdrops.length}</span>
+						</button>
+						<button
+							onClick={handlePoster}
+							className={`${
+								show === "poster" ? "" : "border-b-transparent"
+							} border-b-2 font-semibold`}>
+							Poster <span className="font-thin">{posters.length}</span>
+						</button>
+					</div>
+				</div>
+
+				<div
+					className={`${
+						show === "backdrop" ? "block " : "hidden "
+					} rounded-t-lg border-1 overflow-x-scroll my-4 flex`}>
+					{backdrops.map(backdrop => {
+						const { file_path } = backdrop;
+						return (
+							<a
+								key={file_path}
+								href={`${baseImgUrl}/w1066_and_h600_bestv2/${file_path}`}
+								className="block h-[18rem] flex-shrink-0"
+								rel="noopener noreferrer"
+								target="_blank">
+								<img
+									src={`${baseImgUrl}/w1066_and_h600_bestv2/${file_path}`}
+									className="h-[18rem]  w-auto"
+								/>
+							</a>
+						);
+					})}
+				</div>
+				<div
+					className={`${
+						show === "poster" ? "block " : "hidden "
+					} rounded-t-lg border-1 overflow-x-scroll my-4 flex`}>
+					{posters.map(poster => {
+						const { file_path } = poster;
+						return (
+							<a
+								key={file_path}
+								href={`${baseImgUrl}/w1066_and_h600_bestv2/${file_path}`}
+								className="block h-[18rem] flex-shrink-0"
+								rel="noopener noreferrer"
+								target="_blank">
+								<img
+									key={file_path}
+									src={`${baseImgUrl}/original/${file_path}`}
+									className="h-[18rem]  w-auto object-contain"
+								/>
+							</a>
+						);
+					})}
+				</div>
+			</section>
+		);
 	}
 }
 export default MediaPoster;

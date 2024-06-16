@@ -9,6 +9,7 @@ async function fetchMovieCustom({
 	mode: "credits" | "images";
 }) {
 	const res = await customFetch<Credits | MovieImages>(`/movie/${id}/${mode}`);
+
 	return res.data;
 }
 export default fetchMovieCustom;
