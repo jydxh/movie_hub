@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MaleAvatar from "@/assets/man.jpg";
 import FemaleAvatar from "@/assets/woman.jpg";
 import getAllDept from "@/utils/getAllDept";
+import { Divider } from "@mui/material";
 
 const imgClass = "rounded-lg w-[4.6rem]";
 
@@ -12,7 +13,7 @@ function PeopleCard({ item }: { item: Cast }) {
 		<>
 			<li className="mb-4">
 				<Link to={`/people/${cast_id || id}`}>
-					<div className="flex gap-x-8">
+					<div className="md:flex md:gap-x-4 lg:gap-x-8">
 						{profile_path ? (
 							<img
 								className={imgClass}
@@ -26,9 +27,9 @@ function PeopleCard({ item }: { item: Cast }) {
 								alt={name}
 							/>
 						)}
-						<div className="flex flex-col justify-center">
-							<p className="font-bold">{name}</p>
-							<p className="text-sm">{character || job}</p>
+						<div className="mt-2 md:mt-0 flex flex-col justify-center">
+							<p className="font-bold md:text-base text-sm">{name}</p>
+							<p className="md:text-sm text-xs">{character || job}</p>
 						</div>
 					</div>
 				</Link>
@@ -42,7 +43,7 @@ function MovieCastList({ credits }: { credits: Credits }) {
 	depArray.sort((a, b) => a.localeCompare(b)).shift(); // to get the sorted department Array
 
 	return (
-		<section className="grid grid-cols-2 p-4 mt-4">
+		<section className="grid grid-cols-3 p-1 md:p-4 mt-4">
 			<div>
 				<h2 className="text-xl font-semibold">
 					Cast{" "}
@@ -53,6 +54,9 @@ function MovieCastList({ credits }: { credits: Credits }) {
 						<PeopleCard key={item.cast_id} item={item} />
 					))}
 				</ul>
+			</div>
+			<div className="flex justify-center -mx-10">
+				<Divider orientation="vertical" />
 			</div>
 
 			<div>
