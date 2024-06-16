@@ -69,7 +69,7 @@ function MovieCastList({ credits }: { credits: Credits }) {
 						filteredCrew.sort((a, b) => a.job!.localeCompare(b.job!));
 						return (
 							<li key={index + Math.random()}>
-								<h4>{dep}</h4>
+								<h4 className="font-bold mb-2">{dep}</h4>
 								{filteredCrew.map(item => (
 									<ul key={item.credit_id}>
 										<PeopleCard item={item} />
