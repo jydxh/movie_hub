@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-import fetchMovieImages from "@/api/MovieApi/fetchMovieImages";
+
+import fetchMovieCustom from "@/api/MovieApi/fetchMovieCustom";
 function MediaPoster() {
 	const { id } = useParams();
 	const { data, error, isPending, isError } = useQuery({
 		queryKey: ["MovieImages", id],
-		queryFn: () => fetchMovieImages({ id }),
+		queryFn: () => fetchMovieCustom({ id, mode: "images" }),
 		staleTime: 5 * 60 * 1000 /* 5 minnutes  */,
 	});
 	if (isError) {

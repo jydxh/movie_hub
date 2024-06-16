@@ -26,7 +26,7 @@ function RatingCircle({
 					className={`${fontSize === "small" ? "text-xs " : ""} ${
 						fontSize === "medium" ? "text-sm " : ""
 					} ${
-						fontSize === "large" ? "text-base " : ""
+						fontSize === "large" ? "text-lg " : ""
 					} z-20  bg-gray-500 w-[80%] h-[80%] rounded-full flex justify-center items-center`}>
 					{percentage}
 					<span style={{ fontSize: "6px" }}>%</span>

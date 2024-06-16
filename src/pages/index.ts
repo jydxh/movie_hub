@@ -24,7 +24,10 @@ import SingleTv from "./SingleTv";
 import MovieHome from "./Movie/MovieHome";
 import TvHome from "./TV/TvHome";
 
+import MovieCast from "./Movie/MovieCast";
+
 export {
+	MovieCast,
 	TvHome,
 	MovieHome,
 	SingleTv,
