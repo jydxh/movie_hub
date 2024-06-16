@@ -30,7 +30,6 @@ function MovieCast() {
 	}
 
 	if (data) {
-		console.log(data);
 		const credits = data.credits as Credits;
 		return (
 			<>

@@ -12,7 +12,7 @@ function PeopleCard({ item }: { item: Cast }) {
 	return (
 		<>
 			<li className="mb-4">
-				<Link to={`/people/${cast_id || id}`}>
+				<Link to={`/people/${id || cast_id}`}>
 					<div className="md:flex md:gap-x-4 lg:gap-x-8">
 						{profile_path ? (
 							<img
@@ -39,8 +39,10 @@ function PeopleCard({ item }: { item: Cast }) {
 }
 
 function MovieCastList({ credits }: { credits: Credits }) {
-	const depArray = getAllDept(credits.crew);
-	depArray.sort((a, b) => a.localeCompare(b)).shift(); // to get the sorted department Array
+	let depArray = getAllDept(credits.crew);
+	depArray = depArray
+		.sort((a, b) => a.localeCompare(b))
+		.filter(item => item !== "Acting"); // to get the sorted department Array
 
 	return (
 		<section className="grid grid-cols-3 p-1 md:p-4 mt-4">

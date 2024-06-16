@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import { Skeleton } from "@mui/material";
 import fetchMovieDetails from "@/api/MovieApi/fetchMovieDetails";
+import { Divider } from "@mui/material";
 function SingleMovie() {
 	const { id } = useParams();
 	const { data, error, isPending, isError } = useQuery({
@@ -31,8 +32,11 @@ function SingleMovie() {
 			<>
 				<MovieDetailHero data={data} />
 				<CastList data={data.credits} />
+				<Divider className="mt-2" />
 				<MediaReview data={data.reviews} />
+				<Divider className="mt-2" />
 				<MediaPoster />
+				<Divider className="mt-2" />
 				<MediaRecommendation data={data.recommendations} />
 			</>
 		);

@@ -368,12 +368,12 @@ export interface Reviews {
 	total_results: number;
 }
 export interface ReviewsResult {
-	author: string;
+	author?: string;
 	author_details: AuthorDetails;
 	content: string;
-	created_at: Date;
+	created_at: string;
 	id: string;
-	updated_at: Date;
+	updated_at: string;
 	url: string;
 }
 export interface AuthorDetails {
