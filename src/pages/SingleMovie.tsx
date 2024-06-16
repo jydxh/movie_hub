@@ -1,4 +1,4 @@
-import MovieDetailHero from "@/components/Movie/MovieDetailHero";
+import MediaDetailHero from "@/components/Movie/MediaDetailHero";
 import CastList from "@/components/ui/CastList";
 import MediaReview from "@/components/ui/MediaReview";
 import MediaPoster from "@/components/ui/MediaPoster";
@@ -27,13 +27,13 @@ function SingleMovie() {
 	} else if (isError) {
 		return <p className="text-center text-xl">Error: {error.message}</p>;
 	} else if (data) {
-		console.log(data);
+		//console.log(data);
 		return (
 			<>
-				<MovieDetailHero data={data} />
+				<MediaDetailHero data={data} />
 				<CastList data={data.credits} />
 				<Divider className="mt-2" />
-				<MediaReview data={data.reviews} id={id} />
+				<MediaReview data={data.reviews} />
 				<Divider className="mt-2" />
 				<MediaPoster />
 				<Divider className="mt-2" />

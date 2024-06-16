@@ -1,4 +1,4 @@
-import MovieCastHeader from "@/components/Movie/MovieCastHeader";
+import MediaCastHeader from "@/components/Movie/MediaCastHeader";
 import { useLocation } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import fetchMovieReview from "@/api/MovieApi/fetchMovieReview";
@@ -38,7 +38,7 @@ function MovieReviews() {
 		console.log(reviews);
 		return (
 			<>
-				<MovieCastHeader
+				<MediaCastHeader
 					id={id}
 					img={data.movie.poster_path}
 					title={data.movie.title}

@@ -1,9 +1,39 @@
 import formateDate from "@/utils/formateDate";
-import { Recommendations, baseImgUrl } from "@/utils/types";
+import {
+	MovieRecommendations,
+	MovieRecommendationsResult,
+	TvRecommendations,
+	TvRecommendationsResult,
+	baseImgUrl,
+} from "@/utils/types";
 import { Link } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
-function MediaRecommendation({ data }: { data: Recommendations }) {
+// Type guard for MovieRecommendations
+function isMovieRecommendationsResult(
+	result: MovieRecommendationsResult | TvRecommendationsResult
+): result is MovieRecommendationsResult {
+	return (
+		(result as MovieRecommendationsResult) !== undefined &&
+		(result as MovieRecommendationsResult).media_type === "movie"
+	);
+}
+
+// Type guard for TvRecommendations
+function isTvRecommendationsResult(
+	result: MovieRecommendationsResult | TvRecommendationsResult
+): result is TvRecommendationsResult {
+	return (
+		(result as MovieRecommendationsResult) !== undefined &&
+		(result as MovieRecommendationsResult).media_type === "tv"
+	);
+}
+
+function MediaRecommendation({
+	data,
+}: {
+	data: MovieRecommendations | TvRecommendations;
+}) {
 	console.log(data);
 	const { results } = data;
 	if (results.length > 0) {
@@ -12,14 +42,19 @@ function MediaRecommendation({ data }: { data: Recommendations }) {
 				<h4 className="font-semibold text-xl">Recommendations</h4>
 				<div className="rounded-lg overflow-x-scroll p-4 flex gap-x-4">
 					{results.map(result => {
-						const {
-							id,
-							title,
-							media_type,
-							vote_average,
-							release_date,
-							backdrop_path,
-						} = result;
+						const { id, media_type, vote_average, backdrop_path } = result;
+
+						let title = "";
+						let release_date = "";
+						if (isMovieRecommendationsResult(result)) {
+							title = result.title;
+							release_date = result.release_date;
+						}
+						if (isTvRecommendationsResult(result)) {
+							title = result.name;
+							release_date = result.first_air_date;
+						}
+
 						return (
 							<Link
 								to={`/${media_type === "movie" ? "movie" : "tv_show"}/${id}`}

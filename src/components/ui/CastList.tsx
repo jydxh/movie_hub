@@ -1,8 +1,9 @@
-import { Credits, baseImgUrl } from "@/utils/types";
+import { MovieCredits, TvCredits, baseImgUrl } from "@/utils/types";
 import EastIcon from "@mui/icons-material/East";
+import { isTvCast, isMovieCast } from "../Movie/MediaCastList";
 
 import { Link } from "react-router-dom";
-function CastList({ data }: { data: Credits }) {
+function CastList({ data }: { data: TvCredits | MovieCredits }) {
 	const { cast: casts } = data;
 	return (
 		<>
@@ -12,7 +13,14 @@ function CastList({ data }: { data: Credits }) {
 					{casts
 						.filter((_, index) => index <= 9)
 						.map(cast => {
-							const { id, name, character, profile_path } = cast;
+							const { id, name, profile_path } = cast;
+							let character = "";
+							if (isMovieCast(cast)) {
+								character = cast.character || "unknow";
+							}
+							if (isTvCast(cast)) {
+								character = cast.roles?.[0].character || "unknow";
+							}
 							return (
 								<li
 									key={id}

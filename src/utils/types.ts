@@ -357,8 +357,8 @@ export interface MovieDetailResponse {
 	vote_average: number;
 	vote_count: number;
 	reviews: Reviews;
-	credits: Credits;
-	recommendations: Recommendations;
+	credits: MovieCredits;
+	recommendations: MovieRecommendations;
 }
 
 export interface Reviews {
@@ -383,12 +383,16 @@ export interface AuthorDetails {
 	rating: number | null;
 }
 
-export interface Credits {
-	cast: Cast[];
-	crew: Cast[];
+export interface MovieCredits {
+	cast: MovieCast[];
+	crew: MovieCast[];
+}
+export interface TvCredits {
+	cast: TvCast[];
+	crew: TvCast[];
 }
 
-export interface Cast {
+export interface MovieCast {
 	adult: boolean;
 	gender: number;
 	id: number;
@@ -404,15 +408,54 @@ export interface Cast {
 	department?: string;
 	job?: string;
 }
+export enum Department {
+	Acting = "Acting",
+	Art = "Art",
+	Camera = "Camera",
+	CostumeMakeUp = "Costume & Make-Up",
+	Crew = "Crew",
+	Directing = "Directing",
+	Editing = "Editing",
+	Production = "Production",
+	Sound = "Sound",
+	VisualEffects = "Visual Effects",
+	Writing = "Writing",
+}
+export interface Role {
+	credit_id: string;
+	character: string;
+	episode_count: number;
+}
 
-export interface Recommendations {
+export interface TvCast {
+	adult: boolean;
+	gender: number;
+	id: number;
+	known_for_department: Department;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: null | string;
+	roles?: Role[];
+	total_episode_count: number;
+	order?: number;
+	jobs?: Job[];
+	department?: Department;
+}
+export interface Job {
+	credit_id: string;
+	job: string;
+	episode_count: number;
+}
+
+export interface MovieRecommendations {
 	page: number;
-	results: RecommendationsResult[];
+	results: MovieRecommendationsResult[];
 	total_pages: number;
 	total_results: number;
 }
 
-export interface RecommendationsResult {
+export interface MovieRecommendationsResult {
 	backdrop_path: string;
 	id: number;
 	original_title: string;
@@ -430,14 +473,37 @@ export interface RecommendationsResult {
 	vote_count: number;
 }
 
-export interface MovieImages {
+export interface TvRecommendations {
+	page: number;
+	results: TvRecommendationsResult[];
+	total_pages: number;
+	total_results: number;
+}
+
+export interface TvRecommendationsResult {
+	backdrop_path: string;
+	id: number;
+	original_name: string;
+	overview: string;
+	poster_path: string;
+	media_type: MediaType;
+	adult: boolean;
+	name: string;
+	original_language: OriginalLanguage;
+	genre_ids: number[];
+	popularity: number;
+	first_air_date: string;
+	vote_average: number;
+	vote_count: number;
+	origin_country: OriginCountry[];
+}
+
+export interface MediaImages {
 	backdrops: Backdrop[];
 	id: number;
 	logos: Backdrop[];
 	posters: Backdrop[];
 }
-
-export type TvImages = MovieImages;
 
 export interface Backdrop {
 	aspect_ratio: number;
@@ -525,7 +591,7 @@ export interface TvMultiFetchResponse {
 	type: string;
 	vote_average: number;
 	vote_count: number;
-	aggregate_credits: Credits;
+	aggregate_credits: TvCredits;
 	reviews: Reviews;
-	recommendations: Recommendations;
+	recommendations: TvRecommendations;
 }

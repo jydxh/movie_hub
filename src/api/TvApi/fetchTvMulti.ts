@@ -12,7 +12,7 @@ async function fetchTvMulti({
 	const res = await customFetch<TvMultiFetchResponse | TvImages>(
 		`/tv/${id}${mode === "multi" ? params : "/images"}`
 	);
-	console.log(res.data);
+	//console.log(res.data);
 	return res.data;
 }
 

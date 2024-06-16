@@ -1,10 +1,10 @@
-import MovieCastHeader from "@/components/Movie/MovieCastHeader";
+import MediaCastHeader from "@/components/Movie/MediaCastHeader";
 import { useLocation } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import fetchMovieCustom from "@/api/MovieApi/fetchMovieCustom";
 import fetchMovieDetails from "@/api/MovieApi/fetchMovieDetails";
-import MovieCastList from "@/components/Movie/MovieCastList";
-import { Credits } from "@/utils/types";
+import MediaCastList from "@/components/Movie/MediaCastList";
+import { MovieCredits } from "@/utils/types";
 
 function MovieCast() {
 	const { pathname } = useLocation();
@@ -30,15 +30,15 @@ function MovieCast() {
 	}
 
 	if (data) {
-		const credits = data.credits as Credits;
+		const credits = data.credits as MovieCredits;
 		return (
 			<>
-				<MovieCastHeader
+				<MediaCastHeader
 					id={id}
 					img={data.movie.poster_path}
 					title={data.movie.title}
 				/>
-				<MovieCastList credits={credits} />
+				<MediaCastList credits={credits} />
 			</>
 		);
 	}

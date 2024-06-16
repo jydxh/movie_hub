@@ -23,7 +23,7 @@ function CardWrapper({
 	);
 }
 
-function MediaReview({ data, id }: { data: Reviews; id?: string }) {
+function MediaReview({ data }: { data: Reviews }) {
 	if (data.total_results > 0) {
 		return (
 			<CardWrapper data={data}>
@@ -38,7 +38,7 @@ function MediaReview({ data, id }: { data: Reviews; id?: string }) {
 							? "block mt-8 capitalize font-bold hover:text-gray-400"
 							: "hidden"
 					}>
-					<Link to={`/movie/${id}/reviews`}> read all reviews</Link>
+					<Link to="reviews"> read all reviews</Link>
 				</div>
 			</CardWrapper>
 		);

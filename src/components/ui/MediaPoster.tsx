@@ -1,20 +1,24 @@
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-import { MovieImages, baseImgUrl } from "@/utils/types";
+import { MediaImages, baseImgUrl } from "@/utils/types";
 import { useState } from "react";
-
 import fetchMovieCustom from "@/api/MovieApi/fetchMovieCustom";
-function MediaPoster() {
+import fetchTvMulti from "@/api/TvApi/fetchTvMulti";
+
+function MediaPoster({ mode = "movie" }: { mode: "movie" | "tv" }) {
 	const { id } = useParams();
 	const [show, setShow] = useState<"backdrop" | "poster">("backdrop");
 	const { data, error, isPending, isError } = useQuery({
-		queryKey: ["MovieImages", id],
-		queryFn: () => fetchMovieCustom({ id, mode: "images" }),
+		queryKey: ["MovieOrTvImages", id],
+		queryFn: () => {
+			if (mode === "movie") return fetchMovieCustom({ id, mode: "images" });
+
+			if (mode === "tv") return fetchTvMulti({ id, mode: "images" });
+		},
+
 		staleTime: 5 * 60 * 1000 /* 5 minnutes  */,
 	});
-	/* useEffect(() => {
-		console.log(data);
-	}, [data]); */ // Only log when 'data' changes
+
 	const handleBackDrop = () => {
 		setShow("backdrop");
 	};
@@ -28,7 +32,8 @@ function MediaPoster() {
 		<p className="mx-auto text-center text-xl">...Loading...</p>;
 	}
 	if (data) {
-		const { backdrops, posters } = data as MovieImages;
+		console.log(data);
+		const { backdrops, posters } = data as MediaImages;
 		return (
 			<section className="p-4">
 				<div className="flex justify-start items-end gap-x-16">

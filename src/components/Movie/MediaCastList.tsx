@@ -1,4 +1,10 @@
-import { Credits, baseImgUrl, Cast } from "@/utils/types";
+import {
+	baseImgUrl,
+	MovieCast,
+	TvCast,
+	MovieCredits,
+	TvCredits,
+} from "@/utils/types";
 import { Link } from "react-router-dom";
 import MaleAvatar from "@/assets/man.jpg";
 import FemaleAvatar from "@/assets/woman.jpg";
@@ -7,12 +13,48 @@ import { Divider } from "@mui/material";
 
 const imgClass = "rounded-lg w-[4.6rem]";
 
-function PeopleCard({ item }: { item: Cast }) {
-	const { cast_id, profile_path, gender, name, character, id, job } = item;
+export const isTvCast = (item: MovieCast | TvCast): item is TvCast => {
+	return (
+		item !== undefined &&
+		Object.prototype.hasOwnProperty.call(item, "total_episode_count")
+	);
+};
+
+export const isMovieCast = (item: MovieCast | TvCast): item is MovieCast => {
+	return (
+		item !== undefined &&
+		Object.prototype.hasOwnProperty.call(item, "credit_id")
+	);
+};
+
+function PeopleCard({
+	item,
+	mode,
+}: {
+	item: MovieCast | TvCast;
+	mode: "cast" | "crew";
+}) {
+	const { profile_path, gender, name, id } = item;
+	let character = "";
+	let job = "";
+	if (isTvCast(item)) {
+		if (mode === "cast") {
+			character = item.roles?.[0]?.character || "unknown";
+		} else {
+			job = item.jobs?.[0]?.job || "unknown";
+		}
+	}
+	if (isMovieCast(item)) {
+		if (mode === "cast") character = item.character || "unknow";
+		else {
+			job = item.job || "unknow";
+		}
+	}
+
 	return (
 		<>
 			<li className="mb-4">
-				<Link to={`/people/${id || cast_id}`}>
+				<Link to={`/people/${id}`}>
 					<div className="md:flex md:gap-x-4 lg:gap-x-8">
 						{profile_path ? (
 							<img
@@ -29,7 +71,9 @@ function PeopleCard({ item }: { item: Cast }) {
 						)}
 						<div className="mt-2 md:mt-0 flex flex-col justify-center">
 							<p className="font-bold md:text-base text-sm">{name}</p>
-							<p className="md:text-sm text-xs">{character || job}</p>
+							<p className="md:text-sm text-xs">
+								{mode === "cast" ? character : job}
+							</p>
 						</div>
 					</div>
 				</Link>
@@ -38,12 +82,12 @@ function PeopleCard({ item }: { item: Cast }) {
 	);
 }
 
-function MovieCastList({ credits }: { credits: Credits }) {
+function MediaCastList({ credits }: { credits: MovieCredits | TvCredits }) {
 	let depArray = getAllDept(credits.crew);
 	depArray = depArray
 		.sort((a, b) => a.localeCompare(b))
 		.filter(item => item !== "Acting"); // to get the sorted department Array
-
+	console.log(credits);
 	return (
 		<section className="grid grid-cols-3 p-1 md:p-4 mt-4">
 			<div>
@@ -53,7 +97,7 @@ function MovieCastList({ credits }: { credits: Credits }) {
 				</h2>
 				<ul className="mt-6">
 					{credits.cast.map(item => (
-						<PeopleCard key={item.cast_id} item={item} />
+						<PeopleCard key={item.id} item={item} mode="cast" />
 					))}
 				</ul>
 			</div>
@@ -71,14 +115,12 @@ function MovieCastList({ credits }: { credits: Credits }) {
 						const filteredCrew = credits.crew.filter(
 							item => item.known_for_department === dep
 						);
-
-						filteredCrew.sort((a, b) => a.job!.localeCompare(b.job!));
 						return (
 							<li key={index + Math.random()}>
 								<h4 className="font-bold mb-2">{dep}</h4>
 								{filteredCrew.map(item => (
-									<ul key={item.credit_id}>
-										<PeopleCard item={item} />
+									<ul key={item.id + Math.random()}>
+										<PeopleCard item={item} mode="crew" />
 									</ul>
 								))}
 							</li>
@@ -89,4 +131,4 @@ function MovieCastList({ credits }: { credits: Credits }) {
 		</section>
 	);
 }
-export default MovieCastList;
+export default MediaCastList;

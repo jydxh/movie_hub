@@ -1,11 +1,33 @@
 import { useParams } from "react-router";
-import { MovieDetailResponse } from "@/utils/types";
+import { MovieDetailResponse, TvMultiFetchResponse } from "@/utils/types";
 import { baseImgUrl } from "@/utils/types";
 import backgroundColor from "@/utils/backgroundColor";
 import minutesToHours from "@/utils/minutesToHours";
 import RatingCircle from "../ui/RatingCircle";
 import formatDollars from "@/utils/formatDollars";
-function MovieDetailHero({ data }: { data: MovieDetailResponse }) {
+
+function isMovie(
+	data: MovieDetailResponse | TvMultiFetchResponse
+): data is MovieDetailResponse {
+	return (
+		data !== undefined &&
+		Object.prototype.hasOwnProperty.call(data, "release_date")
+	);
+}
+function isTv(
+	data: MovieDetailResponse | TvMultiFetchResponse
+): data is TvMultiFetchResponse {
+	return (
+		data !== undefined &&
+		Object.prototype.hasOwnProperty.call(data, "first_air_date")
+	);
+}
+
+function MediaDetailHero({
+	data,
+}: {
+	data: MovieDetailResponse | TvMultiFetchResponse;
+}) {
 	const { id } = useParams();
 	const bgColor = backgroundColor(id);
 
@@ -13,21 +35,35 @@ function MovieDetailHero({ data }: { data: MovieDetailResponse }) {
 		const {
 			backdrop_path,
 			poster_path,
-			title,
-			release_date,
 			genres,
-			runtime,
+			homepage,
 			vote_average,
 			tagline,
 			overview,
 			status,
-			budget,
-			revenue,
 			production_companies,
 			original_language,
 			popularity,
-		} = data as MovieDetailResponse;
-		//console.log(data);
+		} = data;
+		let title = "";
+		let release_date = "";
+		let runtime = 0;
+		let budget: string | number = "unknown";
+		let revenue: string | number = "unknown";
+		if (isMovie(data)) {
+			title = data.title;
+			release_date = data.release_date;
+			budget = data.budget;
+			revenue = data.revenue;
+			runtime = data.runtime;
+		}
+		if (isTv(data)) {
+			title = data.name;
+			release_date = data.first_air_date;
+			budget = "unknow";
+			revenue = "unknow";
+			runtime = data.episode_run_time[0];
+		}
 		return (
 			<>
 				<div className="relative">
@@ -52,7 +88,11 @@ function MovieDetailHero({ data }: { data: MovieDetailResponse }) {
 								/>
 							</div>
 							<div className="mt-8 md:mt-0 w-full text-white text-center md:text-start ">
-								<h2 className="text-3xl font-bold">{title}</h2>
+								<h2 className="text-3xl font-bold">
+									<a href={homepage} target="_blank">
+										{title}
+									</a>
+								</h2>
 								<p>
 									<span>{release_date}</span>
 									<span>&nbsp;/&nbsp;</span>
@@ -112,4 +152,4 @@ function MovieDetailHero({ data }: { data: MovieDetailResponse }) {
 		);
 	}
 }
-export default MovieDetailHero;
+export default MediaDetailHero;

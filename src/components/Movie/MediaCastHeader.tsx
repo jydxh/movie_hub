@@ -7,10 +7,12 @@ function MovieCastHeader({
 	id,
 	img,
 	title,
+	mode = "movie",
 }: {
 	img: string;
 	title: string;
 	id: string;
+	mode?: "movie" | "tv_show";
 }) {
 	return (
 		<section className={`${backgroundColor(id)} p-4 flex gap-x-8`}>
@@ -21,10 +23,10 @@ function MovieCastHeader({
 			/>
 			<div className="flex flex-col justify-center">
 				<h1 className="text-3xl font-bold text-white hover:text-gray-400">
-					<Link to={`/movie/${id}`}>{title}</Link>
+					<Link to={`/${mode}/${id}`}>{title}</Link>
 				</h1>
 				<Link
-					to={`/movie/${id}`}
+					to={`/${mode}/${id}`}
 					className="text-gray-300 hover:text-gray-400 flex items-center gap-x-2">
 					<WestIcon /> Back to main
 				</Link>
