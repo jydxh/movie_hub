@@ -356,4 +356,93 @@ export interface MovieDetailResponse {
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
+	reviews: Reviews;
+	credits: Credits;
+	recommendations: Recommendations;
+}
+
+export interface Reviews {
+	page: number;
+	results: ReviewsResult[];
+	total_pages: number;
+	total_results: number;
+}
+export interface ReviewsResult {
+	author: string;
+	author_details: AuthorDetails;
+	content: string;
+	created_at: Date;
+	id: string;
+	updated_at: Date;
+	url: string;
+}
+export interface AuthorDetails {
+	name: string;
+	username: string;
+	avatar_path: null | string;
+	rating: number | null;
+}
+
+export interface Credits {
+	cast: Cast[];
+	crew: Cast[];
+}
+
+export interface Cast {
+	adult: boolean;
+	gender: number;
+	id: number;
+	known_for_department: string;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: null | string;
+	cast_id?: number;
+	character?: string;
+	credit_id: string;
+	order?: number;
+	department?: string;
+	job?: string;
+}
+
+export interface Recommendations {
+	page: number;
+	results: RecommendationsResult[];
+	total_pages: number;
+	total_results: number;
+}
+
+export interface RecommendationsResult {
+	backdrop_path: string;
+	id: number;
+	original_title: string;
+	overview: string;
+	poster_path: string;
+	media_type: MediaType;
+	adult: boolean;
+	title: string;
+	original_language: OriginalLanguage;
+	genre_ids: number[];
+	popularity: number;
+	release_date: Date;
+	video: boolean;
+	vote_average: number;
+	vote_count: number;
+}
+
+export interface MovieImages {
+	backdrops: Backdrop[];
+	id: number;
+	logos: Backdrop[];
+	posters: Backdrop[];
+}
+
+export interface Backdrop {
+	aspect_ratio: number;
+	height: number;
+	iso_639_1: null | string;
+	file_path: string;
+	vote_average: number;
+	vote_count: number;
+	width: number;
 }

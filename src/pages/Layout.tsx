@@ -66,7 +66,6 @@ function Layout() {
 				<Outlet />
 				<ScrollRestoration
 					getKey={location => {
-						// default behavior
 						return location.pathname;
 					}}
 				/>

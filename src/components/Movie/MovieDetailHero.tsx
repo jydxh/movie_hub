@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import fetchMovieDetails from "@/api/MovieApi/fetchMovieDetails";
 import { useParams } from "react-router";
 import { MovieDetailResponse } from "@/utils/types";
 import { baseImgUrl } from "@/utils/types";
@@ -7,14 +5,9 @@ import backgroundColor from "@/utils/backgroundColor";
 import minutesToHours from "@/utils/minutesToHours";
 import RatingCircle from "../ui/RatingCircle";
 import formatDollars from "@/utils/formatDollars";
-function MovieDetailHero() {
+function MovieDetailHero({ data }: { data: MovieDetailResponse }) {
 	const { id } = useParams();
 	const bgColor = backgroundColor(id);
-	const { data } = useQuery({
-		queryKey: ["MovieDetails", id],
-		queryFn: () => fetchMovieDetails({ id }),
-		staleTime: 5 * 60 * 1000 /* 5 minnutes  */,
-	});
 
 	if (data && id) {
 		const {
