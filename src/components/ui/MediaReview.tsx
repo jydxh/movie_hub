@@ -1,27 +1,37 @@
 import { Reviews } from "@/utils/types";
 import { Link } from "react-router-dom";
 import MediaReviewCard from "./MediaReviewCard";
+import React from "react";
+
+function CardWrapper({
+	children,
+	data,
+}: {
+	children: React.ReactNode;
+	data?: Reviews;
+}) {
+	return (
+		<section className="mt-4 p-4 ">
+			<div className="flex justify-start items-end gap-x-20">
+				<h3 className="font-semibold text-xl">Social</h3>
+				<p className="font-semibold">
+					Reviews <span className="font-light">{data?.total_results || 0}</span>
+				</p>
+			</div>
+			{children}
+		</section>
+	);
+}
+
 function MediaReview({ data, id }: { data: Reviews; id?: string }) {
-	console.log(data);
-	console.log("id", id);
-
-	console.log(data);
-
-	if (data) {
+	if (data.total_results > 0) {
 		return (
-			<section className="mt-4 p-4 ">
-				<div className="flex justify-start items-end gap-x-20">
-					<h3 className="font-semibold text-xl">Social</h3>
-					<p className="font-semibold">
-						Reviews <span className="font-light">0</span>
-					</p>
-				</div>
+			<CardWrapper data={data}>
 				{data.results
 					.filter((_, index) => index === data.results.length - 1)
 					.map(result => (
-						<MediaReviewCard data={result} key={id} />
+						<MediaReviewCard data={result} key={result.id} />
 					))}
-
 				<div
 					className={
 						data.results.length > 1
@@ -30,22 +40,15 @@ function MediaReview({ data, id }: { data: Reviews; id?: string }) {
 					}>
 					<Link to={`/movie/${id}/reviews`}> read all reviews</Link>
 				</div>
-			</section>
+			</CardWrapper>
 		);
 	} else {
 		return (
-			<section className="mt-4 p-4 ">
-				<div className="flex justify-start items-end gap-x-20">
-					<h3 className="font-semibold text-xl">Social</h3>
-					<p className="font-semibold">
-						Reviews <span className="font-light">0</span>
-					</p>
-				</div>
+			<CardWrapper>
 				<div className="mt-4 p-4 ">
-					{" "}
 					We don't have any reviews yet. Would you like to write one?
 				</div>
-			</section>
+			</CardWrapper>
 		);
 	}
 }
