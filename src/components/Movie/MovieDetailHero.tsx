@@ -68,7 +68,7 @@ function MovieDetailHero({ data }: { data: MovieDetailResponse }) {
 								<div className="flex items-center justify-center md:justify-start gap-x-8 mt-4">
 									<RatingCircle
 										value={vote_average}
-										className="md:top-1 w-[4rem] h-[4rem] top-1.5"
+										className="md:top-1 w-[4rem] h-[4rem] top-1.5 font-bold"
 										fontSize="large"
 									/>
 									<p>User Score </p>
