@@ -23,6 +23,8 @@ import {
 	MovieHome,
 	MovieCast,
 	MovieReviews,
+	TvCast,
+	TvReviews,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -111,6 +113,8 @@ const router = createHashRouter([
 				],
 			},
 			{ path: "tv_show/:id", element: <SingleTv /> },
+			{ path: "tv_show/:id/cast", element: <TvCast /> },
+			{ path: "tv_show/:id/reviews", element: <TvReviews /> },
 			{ path: "people", element: <People />, loader: PopularPeopleLoader },
 			{ path: "people/:id", element: <SinglePerson /> },
 			{
@@ -163,3 +167,7 @@ export default function App() {
 		<RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} />
 	);
 }
+
+//aggregate_credits,reviews,recommendations
+
+//
