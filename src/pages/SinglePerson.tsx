@@ -43,7 +43,7 @@ function SinglePerson() {
 			<h1 className="font-bold text-3xl mb-8">{name}</h1>
 			<Divider className="mb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">
-				<div className="mt-8 md:col-span-1 mx-auto">
+				<div className="mt-8 md:col-span-1 ">
 					<PersonInfo
 						img={profile_path}
 						name={name}
