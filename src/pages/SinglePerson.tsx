@@ -56,7 +56,7 @@ function SinglePerson() {
 					/>
 				</div>
 				<Divider className="sm:hidden my-8" />
-				<div className="md:col-span-2 mx-auto">
+				<div className="md:col-span-2">
 					<PersonBio biography={biography} />
 					<Divider className="sm:hidden my-8" />
 					<PersonKnowfor known_for={known_for} credits={credits} />
