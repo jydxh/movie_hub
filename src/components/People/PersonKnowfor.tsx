@@ -7,14 +7,16 @@ function MediaWrappepr({ title, item }: { title: string; item: Cast | Crew }) {
 			key={item.id}
 			className="flex items-center justify-center flex-col my-4 sm:my-0 flex-shrink-0">
 			<Link
-				className="sm:flex sm:items-start sm:justify-start sm:flex-col sm:my-4 flex-shrink-0"
+				className="flex flex-col items-center justify-center sm:justify-start sm:flex-col sm:my-4"
 				to={`/${item.media_type === "movie" ? "movie" : "tv_show"}/${item.id}`}>
 				<img
 					src={`${baseImgUrl}/w300_and_h450_bestv2/${item.poster_path}`}
 					alt={title}
 					className="rounded-xl mb-2 block sm:h-[12rem] sm:w-[8rem] object-fit"
 				/>
-				<p className="text-xl sm:text-sm sm:w-[8rem] sm:h-[2.4rem] ">{title}</p>
+				<p className="text-xl sm:text-sm sm:w-[8rem] sm:h-[2.4rem] line-clamp-2">
+					{title}
+				</p>
 			</Link>
 		</li>
 	);

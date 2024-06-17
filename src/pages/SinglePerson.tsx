@@ -39,7 +39,7 @@ function SinglePerson() {
 		images,
 	} = data;
 	return (
-		<div className="p-8 text-center mx-auto min-w-[500px]">
+		<div className="p-8 text-center mx-auto min-w-[600px]">
 			<h1 className="font-bold text-3xl mb-8">{name}</h1>
 			<Divider className="mb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">
@@ -63,10 +63,9 @@ function SinglePerson() {
 					<Divider className=" my-8" />
 					<h2 className="font-semibold text-2xl">Personal Images</h2>
 					<ImageList
-						sx={{ width: 500, height: 500 }}
 						cols={3}
 						rowHeight={180}
-						className="mx-auto mt-8">
+						className="mx-auto mt-8 md:w-[500px] md:h-[500px] h-[400px] w-[400px]">
 						{images.profiles.map(item => {
 							const { file_path } = item;
 							return (

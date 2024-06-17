@@ -7,7 +7,7 @@ function Footer() {
 		<footer
 			className={`bg-gradient-to-r from-sky-950 to-slate-900 p-10 mx-auto text-white ${
 				pathname === "/" && " min-w-[630px] px-0"
-			} `}>
+			}${pathname.includes("people") && " min-w-[630px] px-0"} `}>
 			<div className="flex justify-center md:justify-between items-center p-4 mx-auto max-w-[1280px] gap-x-10">
 				<Link to="/">
 					<img src={footerLogo} alt="footerLogo" className="w-[10rem]" />
