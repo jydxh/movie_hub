@@ -87,7 +87,7 @@ function SinglePerson() {
 							})}
 						</ImageList>
 					) : (
-						<p className="mt-4">None Images Available Yet!</p>
+						<p className="mt-4">None Images Available Yet</p>
 					)}
 				</div>
 			</div>
