@@ -54,7 +54,7 @@ function SingleTv() {
 			recommendations,
 		} = data as TvMultiFetchResponse;
 		return (
-			<>
+			<div className="min-w-[450px]">
 				<MediaDetailHero data={data as TvMultiFetchResponse} />
 				<CastList data={credits} />
 				<Divider className="mt-2" />
@@ -65,7 +65,7 @@ function SingleTv() {
 				<MediaPoster mode="tv" />
 				<Divider className="mt-2" />
 				<MediaRecommendation data={recommendations} />
-			</>
+			</div>
 		);
 	}
 }
