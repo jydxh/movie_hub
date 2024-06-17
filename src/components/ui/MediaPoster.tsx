@@ -32,7 +32,6 @@ function MediaPoster({ mode = "movie" }: { mode: "movie" | "tv" }) {
 		<p className="mx-auto text-center text-xl">...Loading...</p>;
 	}
 	if (data) {
-		console.log(data);
 		const { backdrops, posters } = data as MediaImages;
 		return (
 			<section className="p-4">

@@ -64,13 +64,13 @@ export interface PeopleKnownFor {
 	original_language: OriginalLanguage;
 	genre_ids: number[];
 	popularity: number;
-	first_air_date?: Date;
+	first_air_date?: string;
 	vote_average: number;
 	vote_count: number;
 	origin_country?: string[];
 	original_title?: string;
 	title?: string;
-	release_date?: Date;
+	release_date?: string;
 	video?: boolean;
 }
 export enum OriginalLanguage {
@@ -529,7 +529,7 @@ export interface TEpisodeToAir {
 	name: string;
 	vote_average: number;
 	vote_count: number;
-	air_date: Date;
+	air_date: string;
 	episode_number: number;
 	episode_type: string;
 	production_code: string;
@@ -548,7 +548,7 @@ export enum OriginCountry {
 	Us = "US",
 }
 export interface Season {
-	air_date: Date | null;
+	air_date: string | null;
 	episode_count: number;
 	id: number;
 	name: string;
@@ -558,7 +558,7 @@ export interface Season {
 	vote_average: number;
 }
 
-export interface TvMultiFetchResponse {
+export interface TvBaseResponse {
 	adult: boolean;
 	backdrop_path: string;
 	created_by: CreatedBy[];
@@ -568,7 +568,7 @@ export interface TvMultiFetchResponse {
 	homepage: string;
 	id: number;
 	in_production: boolean;
-	languages: OriginalLanguage[];
+	languages: string[];
 	last_air_date: string;
 	last_episode_to_air: TEpisodeToAir;
 	name: string;
@@ -576,8 +576,8 @@ export interface TvMultiFetchResponse {
 	networks: Network[];
 	number_of_episodes: number;
 	number_of_seasons: number;
-	origin_country: OriginCountry[];
-	original_language: OriginalLanguage;
+	origin_country: string[];
+	original_language: string;
 	original_name: string;
 	overview: string;
 	popularity: number;
@@ -591,6 +591,9 @@ export interface TvMultiFetchResponse {
 	type: string;
 	vote_average: number;
 	vote_count: number;
+}
+
+export interface TvMultiFetchResponse extends TvBaseResponse {
 	aggregate_credits: TvCredits;
 	reviews: Reviews;
 	recommendations: TvRecommendations;

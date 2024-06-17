@@ -34,7 +34,6 @@ function MediaRecommendation({
 }: {
 	data: MovieRecommendations | TvRecommendations;
 }) {
-	console.log(data);
 	const { results } = data;
 	if (results.length > 0) {
 		return (

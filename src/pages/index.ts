@@ -28,8 +28,10 @@ import MovieCast from "./Movie/MovieCast";
 import MovieReviews from "./Movie/MovieReviews";
 import TvCast from "./TV/TvCast";
 import TvReviews from "./TV/TvReviews";
+import TvSeasons from "./TV/TvSeasons";
 
 export {
+	TvSeasons,
 	TvReviews,
 	TvCast,
 	MovieReviews,

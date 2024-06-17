@@ -3,7 +3,7 @@ import { baseImgUrl } from "@/utils/types";
 import { Link } from "react-router-dom";
 import WestIcon from "@mui/icons-material/West";
 
-function MovieCastHeader({
+function MediaCastHeader({
 	id,
 	img,
 	title,
@@ -34,4 +34,4 @@ function MovieCastHeader({
 		</section>
 	);
 }
-export default MovieCastHeader;
+export default MediaCastHeader;

@@ -25,6 +25,7 @@ import {
 	MovieReviews,
 	TvCast,
 	TvReviews,
+	TvSeasons,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -44,6 +45,7 @@ import { loader as MovieHomeLoader } from "@/pages/Movie/MovieHome";
 import TvHome, { loader as TvHomeLoader } from "@/pages/TV/TvHome";
 import tvListsLoader from "./utils/tvListsLoader";
 import { loader as PopularPeopleLoader } from "@/pages/People";
+import { loader as TvSeasonsLoader } from "@/pages/TV/TvSeasons";
 
 //const router = createBrowserRouter([
 const router = createHashRouter([
@@ -115,6 +117,11 @@ const router = createHashRouter([
 			{ path: "tv_show/:id", element: <SingleTv /> },
 			{ path: "tv_show/:id/cast", element: <TvCast /> },
 			{ path: "tv_show/:id/reviews", element: <TvReviews /> },
+			{
+				path: "tv_show/:id/seasons",
+				element: <TvSeasons />,
+				loader: TvSeasonsLoader,
+			},
 			{ path: "people", element: <People />, loader: PopularPeopleLoader },
 			{ path: "people/:id", element: <SinglePerson /> },
 			{

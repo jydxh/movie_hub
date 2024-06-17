@@ -3,6 +3,7 @@ import CastList from "@/components/ui/CastList";
 import MediaReview from "@/components/ui/MediaReview";
 import MediaPoster from "@/components/ui/MediaPoster";
 import MediaRecommendation from "@/components/ui/MediaRecommendation";
+import TvSeason from "@/components/TVshows/TvSeason";
 import { Divider } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
@@ -29,6 +30,7 @@ function SingleTv() {
 	} else if (isError) {
 		return <p className="text-center text-xl">Error: {error.message}</p>;
 	} else if (data) {
+		console.log(data);
 		const {
 			aggregate_credits: credits,
 			reviews,
@@ -38,6 +40,8 @@ function SingleTv() {
 			<>
 				<MediaDetailHero data={data as TvMultiFetchResponse} />
 				<CastList data={credits} />
+				<Divider className="mt-2" />
+				<TvSeason data={data as TvMultiFetchResponse} />
 				<Divider className="mt-2" />
 				<MediaReview data={reviews} />
 				<Divider className="mt-2" />
