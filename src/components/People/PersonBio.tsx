@@ -15,7 +15,7 @@ function PersonBio({ biography }: { biography: string }) {
 					? biography
 					: "None biography available yet!"}
 			</article>
-			{biography.length > 300 && (
+			{biography.length > 200 && (
 				<button
 					className="mt-2 text-blue-500 hover:text-blue-700 hover:underline focus:outline-none"
 					onClick={toggleExpansion}>

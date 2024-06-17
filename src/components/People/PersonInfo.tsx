@@ -30,7 +30,7 @@ function PersonInfo({
 		{ title: "Also Known As", name: also_know_as },
 	];
 	return (
-		<section className="mx-auto">
+		<section className="mx-auto w-full">
 			<img
 				src={`${baseImgUrl}/w600_and_h900_bestv2/${img}`}
 				alt={name}

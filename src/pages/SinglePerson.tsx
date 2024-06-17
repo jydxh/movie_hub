@@ -39,11 +39,11 @@ function SinglePerson() {
 		images,
 	} = data;
 	return (
-		<div className="p-8 text-center mx-auto min-w-[480px]">
+		<div className="p-8 text-center mx-auto min-w-[450px]">
 			<h1 className="font-bold text-3xl mb-8">{name}</h1>
 			<Divider className="mb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">
-				<div className="mt-8 md:col-span-1">
+				<div className="mt-8 md:col-span-1 mx-auto">
 					<PersonInfo
 						img={profile_path}
 						name={name}
@@ -56,7 +56,7 @@ function SinglePerson() {
 					/>
 				</div>
 				<Divider className="sm:hidden my-8" />
-				<div className="md:col-span-2">
+				<div className="md:col-span-2 mx-auto">
 					<PersonBio biography={biography} />
 					<Divider className="sm:hidden my-8" />
 					<PersonKnowfor known_for={known_for} credits={credits} />
