@@ -10,7 +10,7 @@ const tvSubNavLink = [
 
 function TvLayout() {
 	return (
-		<div>
+		<div className="min-w-[450px]">
 			<SubNavbar list={tvSubNavLink} />
 			<Outlet />
 		</div>
