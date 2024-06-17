@@ -5,14 +5,13 @@ import { useState } from "react";
 import fetchMovieCustom from "@/api/MovieApi/fetchMovieCustom";
 import fetchTvMulti from "@/api/TvApi/fetchTvMulti";
 
-function MediaPoster({ mode = "movie" }: { mode: "movie" | "tv" }) {
+function MediaPoster({ mode = "movie" }: { mode?: "movie" | "tv" }) {
 	const { id } = useParams();
 	const [show, setShow] = useState<"backdrop" | "poster">("backdrop");
 	const { data, error, isPending, isError } = useQuery({
 		queryKey: ["MovieOrTvImages", id],
 		queryFn: () => {
 			if (mode === "movie") return fetchMovieCustom({ id, mode: "images" });
-
 			if (mode === "tv") return fetchTvMulti({ id, mode: "images" });
 		},
 

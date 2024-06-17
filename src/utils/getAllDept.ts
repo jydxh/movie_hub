@@ -1,6 +1,6 @@
-import { Cast } from "./types";
+import { MovieCast, TvCast } from "./types";
 
-function getAllDept(inputArray: Cast[]) {
+function getAllDept(inputArray: (TvCast | MovieCast)[]) {
 	const newArray = [] as string[];
 	inputArray.forEach(item => {
 		const { known_for_department } = item;

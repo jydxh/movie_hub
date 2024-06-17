@@ -1,5 +1,5 @@
 import { customFetch } from "@/api/customFetch";
-import { TvMultiFetchResponse, TvImages } from "@/utils/types";
+import { TvMultiFetchResponse, MediaImages } from "@/utils/types";
 async function fetchTvMulti({
 	id = "76479",
 	mode = "multi",
@@ -9,7 +9,7 @@ async function fetchTvMulti({
 }) {
 	const params =
 		"?append_to_response=aggregate_credits%2Creviews%2Crecommendations%2Cimages&language=en-US";
-	const res = await customFetch<TvMultiFetchResponse | TvImages>(
+	const res = await customFetch<TvMultiFetchResponse | MediaImages>(
 		`/tv/${id}${mode === "multi" ? params : "/images"}`
 	);
 	//console.log(res.data);
