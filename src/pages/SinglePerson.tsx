@@ -39,7 +39,7 @@ function SinglePerson() {
 		images,
 	} = data;
 	return (
-		<div className="p-8 text-center mx-auto min-w-[600px]">
+		<div className="p-8 text-center mx-auto min-w-[480px]">
 			<h1 className="font-bold text-3xl mb-8">{name}</h1>
 			<Divider className="mb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">

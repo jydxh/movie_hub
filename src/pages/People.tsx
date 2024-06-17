@@ -38,7 +38,7 @@ function People() {
 		navigate(`${pathname}?page=${page}`);
 	};
 	return (
-		<div className="p-8">
+		<div className="min-w-[450px] p-8 mx-auto">
 			<h1 className="text-2xl tracking-wide font-bold">Popular People</h1>
 			<Divider className="my-8" />
 			<ul className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">

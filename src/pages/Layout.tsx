@@ -25,7 +25,9 @@ function Layout() {
 				className={`bg-gradient-to-r from-sky-950 to-slate-900 px-8 text-white ${
 					pathname === "/" && " min-w-[630px]"
 				} ${pathname.includes("people") && " min-w-[630px]"} ${
-					(pathname.includes("movie") || pathname.includes("tv_show")) &&
+					(pathname.includes("movie") ||
+						pathname.includes("tv_show") ||
+						pathname.includes("people")) &&
 					" min-w-[450px]"
 				}
 				
@@ -34,7 +36,9 @@ function Layout() {
 					className={`mx-auto flex justify-between items-center max-w-[1400px] py-4 ${
 						pathname === "/" && " min-w-[570px]"
 					} ${pathname.includes("people") && " min-w-[570px]"} ${
-						(pathname.includes("movie") || pathname.includes("tv_show")) &&
+						(pathname.includes("movie") ||
+							pathname.includes("tv_show") ||
+							pathname.includes("people")) &&
 						" min-w-[400px]"
 					} `}>
 					<nav className="py-2 h-[36px] flex gap-x-8 justify-center items-center  font-semibold capitalize">
