@@ -10,9 +10,11 @@ function MediaPoster({ mode = "movie" }: { mode?: "movie" | "tv" }) {
 	const [show, setShow] = useState<"backdrop" | "poster">("backdrop");
 	const { data, error, isPending, isError } = useQuery({
 		queryKey: ["MovieOrTvImages", id],
-		queryFn: () => {
-			if (mode === "movie") return fetchMovieCustom({ id, mode: "images" });
-			if (mode === "tv") return fetchTvMulti({ id, mode: "images" });
+		queryFn: async () => {
+			if (mode === "movie")
+				return await fetchMovieCustom({ id, mode: "images" });
+			if (mode === "tv") return await fetchTvMulti({ id, mode: "images" });
+			return Promise.resolve(null);
 		},
 
 		staleTime: 5 * 60 * 1000 /* 5 minnutes  */,
