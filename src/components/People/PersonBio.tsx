@@ -10,14 +10,16 @@ function PersonBio({ biography }: { biography: string }) {
 		<section>
 			<h4 className="text-xl font-semibold mb-4">Biography</h4>
 			<article
-				className={`leading-8 text-start ${isExpanded ? "" : "line-clamp-6"}`}>
+				className={`leading-8 text-start ${isExpanded ? "" : "line-clamp-4"}`}>
 				{biography}
 			</article>
-			<button
-				className="mt-2 text-blue-500 hover:text-blue-700 hover:underline focus:outline-none"
-				onClick={toggleExpansion}>
-				{isExpanded ? "Show Less" : "Read More"}
-			</button>
+			{biography.length > 300 && (
+				<button
+					className="mt-2 text-blue-500 hover:text-blue-700 hover:underline focus:outline-none"
+					onClick={toggleExpansion}>
+					{isExpanded ? "Show Less" : "Read More"}
+				</button>
+			)}
 		</section>
 	);
 }

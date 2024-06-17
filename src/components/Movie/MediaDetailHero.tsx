@@ -133,7 +133,7 @@ function MediaDetailHero({
 									</div>
 									<div>
 										<p className="font-semibold">Company</p>
-										<p>{production_companies[0].name}</p>
+										<p>{production_companies[0]?.name || "unknow"}</p>
 									</div>
 									<div>
 										<p className="font-semibold ">Original Language</p>
