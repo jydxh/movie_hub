@@ -4,12 +4,13 @@ import MediaReview from "@/components/ui/MediaReview";
 import MediaPoster from "@/components/ui/MediaPoster";
 import MediaRecommendation from "@/components/ui/MediaRecommendation";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { Skeleton } from "@mui/material";
 import fetchMovieDetails from "@/api/MovieApi/fetchMovieDetails";
-import { Divider } from "@mui/material";
+import { Divider, Button } from "@mui/material";
 function SingleMovie() {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const { data, error, isPending, isError } = useQuery({
 		queryKey: ["MovieDetails", id],
 		queryFn: () => fetchMovieDetails({ id }),
@@ -25,7 +26,23 @@ function SingleMovie() {
 			</div>
 		);
 	} else if (isError) {
-		return <p className="text-center text-xl">Error: {error.message}</p>;
+		return (
+			<div className="w-full h-[80vh] grid place-content-center">
+				<p className="text-center text-3xl text-red-500">
+					Error: {error.message}
+				</p>
+				<Button
+					onClick={() => {
+						navigate(-1);
+					}}
+					className="capitalize mt-4"
+					size="large"
+					variant="outlined"
+					color="success">
+					Go Back
+				</Button>
+			</div>
+		);
 	} else if (data) {
 		//console.log(data);
 		return (

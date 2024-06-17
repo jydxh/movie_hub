@@ -62,29 +62,33 @@ function SinglePerson() {
 					<PersonKnowfor known_for={known_for} credits={credits} />
 					<Divider className=" my-8" />
 					<h2 className="font-semibold text-2xl">Personal Images</h2>
-					<ImageList
-						cols={3}
-						rowHeight={180}
-						className="mx-auto mt-8 md:w-[500px] md:h-[500px] h-[400px] w-[400px]">
-						{images.profiles.map(item => {
-							const { file_path } = item;
-							return (
-								<ImageListItem key={file_path}>
-									<a
-										href={`${baseImgUrl}/original/${file_path}`}
-										className="block"
-										target="_blank">
-										<img
-											srcSet={`${baseImgUrl}/original/${file_path}`}
-											src={`${baseImgUrl}/original/${file_path}`}
-											alt={name}
-											loading="lazy"
-										/>
-									</a>
-								</ImageListItem>
-							);
-						})}
-					</ImageList>
+					{images.profiles.length > 0 ? (
+						<ImageList
+							cols={3}
+							rowHeight={180}
+							className="mx-auto mt-8 md:w-[500px] md:h-[500px] h-[400px] w-[400px]">
+							{images.profiles.map(item => {
+								const { file_path } = item;
+								return (
+									<ImageListItem key={file_path}>
+										<a
+											href={`${baseImgUrl}/original/${file_path}`}
+											className="block"
+											target="_blank">
+											<img
+												srcSet={`${baseImgUrl}/original/${file_path}`}
+												src={`${baseImgUrl}/original/${file_path}`}
+												alt={name}
+												loading="lazy"
+											/>
+										</a>
+									</ImageListItem>
+								);
+							})}
+						</ImageList>
+					) : (
+						<p className="mt-4">None Images Available Yet!</p>
+					)}
 				</div>
 			</div>
 		</div>

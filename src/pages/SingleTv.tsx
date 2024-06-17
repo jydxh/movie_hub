@@ -6,12 +6,13 @@ import MediaRecommendation from "@/components/ui/MediaRecommendation";
 import TvSeason from "@/components/TVshows/TvSeason";
 import { Divider } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
-import { Skeleton } from "@mui/material";
+import { useNavigate, useParams } from "react-router";
+import { Skeleton, Button } from "@mui/material";
 import fetchTvMulti from "@/api/TvApi/fetchTvMulti";
 import { TvMultiFetchResponse } from "@/utils/types";
 function SingleTv() {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const { data, error, isPending, isError } = useQuery({
 		queryKey: ["TvDetails", id],
 		queryFn: () => fetchTvMulti({ id, mode: "multi" }),
@@ -28,7 +29,23 @@ function SingleTv() {
 			</div>
 		);
 	} else if (isError) {
-		return <p className="text-center text-xl">Error: {error.message}</p>;
+		return (
+			<div className="w-full h-[80vh] grid place-content-center">
+				<p className="text-center text-3xl text-red-500">
+					Error: {error.message}
+				</p>
+				<Button
+					onClick={() => {
+						navigate(-1);
+					}}
+					className="capitalize mt-4"
+					size="large"
+					variant="outlined"
+					color="success">
+					Go Back
+				</Button>
+			</div>
+		);
 	} else if (data) {
 		console.log(data);
 		const {

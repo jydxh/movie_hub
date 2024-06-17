@@ -26,6 +26,7 @@ import {
 	TvCast,
 	TvReviews,
 	TvSeasons,
+	Error,
 } from "./pages";
 
 import { action as LoginAction } from "@/pages/Login";
@@ -53,6 +54,7 @@ const router = createHashRouter([
 	{
 		path: "/",
 		element: <Layout />,
+		errorElement: <Error />,
 		children: [
 			{ index: true, element: <Home /> },
 			{

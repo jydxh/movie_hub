@@ -11,7 +11,9 @@ function PersonBio({ biography }: { biography: string }) {
 			<h4 className="text-xl font-semibold mb-4">Biography</h4>
 			<article
 				className={`leading-8 text-start ${isExpanded ? "" : "line-clamp-4"}`}>
-				{biography}
+				{biography && biography.length > 1
+					? biography
+					: "None biography available yet!"}
 			</article>
 			{biography.length > 300 && (
 				<button
