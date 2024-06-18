@@ -39,7 +39,7 @@ function SinglePerson() {
 		images,
 	} = data;
 	return (
-		<div className="p-8 text-center mx-auto min-w-[450px]">
+		<div className="p-8 text-center mx-auto ">
 			<h1 className="font-bold text-3xl mb-8">{name}</h1>
 			<Divider className="mb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-x-4">
@@ -65,8 +65,8 @@ function SinglePerson() {
 					{images.profiles.length > 0 ? (
 						<ImageList
 							cols={3}
-							rowHeight={180}
-							className="mx-auto mt-8 md:w-[500px] md:h-[500px] h-[400px] w-[400px]">
+							rowHeight={220}
+							className="mx-auto mt-8 lg:w-[500px] md:w-[470px] h-[500px] sm:w-[500px] w-[300px]">
 							{images.profiles.map(item => {
 								const { file_path } = item;
 								return (

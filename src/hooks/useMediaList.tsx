@@ -114,7 +114,7 @@ function useMediaList(title: string, mode: "tv" | "movie") {
 	}, [ObserverCallBack, isInfiniteScrollEnabled]);
 
 	return (
-		<div className="grid grid-cols-1 md:flex md:gap-x-4 py-8 px-4 min-w-[450px]">
+		<div className="grid grid-cols-1 md:flex md:gap-x-4 py-8 px-4 ">
 			<MediaFilter mode="movie" />
 			<div className="md:mt-0 mt-8 w-full">
 				<h2 className="font-semibold tracking-wide text-2xl mb-4 capitalize">

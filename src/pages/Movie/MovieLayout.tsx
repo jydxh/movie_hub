@@ -11,7 +11,7 @@ const movieSubList = [
 
 function MovieLayout() {
 	return (
-		<div className="min-w-[450px]">
+		<div>
 			<SubNavbar list={movieSubList} />
 			<Outlet />
 		</div>

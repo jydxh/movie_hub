@@ -22,28 +22,31 @@ function Layout() {
 	return (
 		<>
 			<header
-				className={`bg-gradient-to-r from-sky-950 to-slate-900 px-8 text-white ${
+				className={`bg-gradient-to-r from-sky-950 to-slate-900 sm:px-8 px-1 text-white ${
 					pathname === "/" && " min-w-[630px]"
-				}  ${
-					(pathname.includes("movie") ||
-						pathname.includes("tv_show") ||
-						pathname.includes("people")) &&
-					" min-w-[450px]"
-				}
+				}  
 				
 				`}>
 				<div
 					className={`mx-auto flex justify-between items-center max-w-[1400px] py-4 ${
 						pathname === "/" && " min-w-[570px]"
-					}  ${
-						(pathname.includes("movie") ||
-							pathname.includes("tv_show") ||
-							pathname.includes("people")) &&
-						" min-w-[400px]"
-					} `}>
-					<nav className="py-2 h-[36px] flex gap-x-8 justify-center items-center  font-semibold capitalize">
-						<Link to="/">
-							<img src={Logo} alt="logo" className="w-[10rem]" />
+					}
+					 
+					`}>
+					<nav className="py-2 h-[36px] flex gap-x-8 justify-center items-center font-semibold capitalize">
+						<Link to="/" className="block">
+							<img
+								src={Logo}
+								alt="logo"
+								className={`${
+									pathname.includes("movie") ||
+									pathname.includes("tv_show") ||
+									pathname.includes("people") ||
+									pathname.includes("search")
+										? " w-[4rem]"
+										: " w-[10rem]"
+								}`}
+							/>
 						</Link>
 						<NavInline />
 						<div className="md:hidden relative -start-8 ">
@@ -87,3 +90,24 @@ function Layout() {
 	);
 }
 export default Layout;
+
+/* 
+
+${
+	(pathname.includes("movie") ||
+		pathname.includes("tv_show") ||
+		pathname.includes("people") ||
+		pathname.includes("search")) &&
+	" min-w-[450px]"
+}
+
+ */
+
+/* 
+${
+	(pathname.includes("movie") ||
+		pathname.includes("tv_show") ||
+		pathname.includes("people") ||
+		pathname.includes("search")) &&
+	" min-w-[400px]"
+}  */

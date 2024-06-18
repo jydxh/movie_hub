@@ -24,7 +24,7 @@ function SearchPeopleCard({
 }: SearchPeopleCardProps) {
 	return (
 		<Link to={`/people/${id}`}>
-			<div className="w-full mt-4 md:mt-0 pe-4 flex mb-6 gap-x-6">
+			<div className="w-full mt-4 md:mt-0 pe-4 flex mb-6 gap-x-6 border-1 shadow-lg">
 				<div className="flex-shrink-0">
 					{poster ? (
 						<img
@@ -43,11 +43,11 @@ function SearchPeopleCard({
 					)}
 				</div>
 
-				<div className="mt-4">
+				<div className="mt-4 ">
 					<h4 className="font-semibold"> {name}</h4>
-					<div className="flex gap-x-2">
+					<div className="sm:flex gap-x-2">
 						<p>{department}</p> <span>•</span>
-						<ul className="flex font-thin text-gray-500">
+						<ul className="sm:flex font-thin text-gray-500">
 							{known_for.map(item => {
 								const { id, title, name, original_name } = item;
 								return (

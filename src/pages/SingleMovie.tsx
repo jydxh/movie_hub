@@ -46,7 +46,7 @@ function SingleMovie() {
 	} else if (data) {
 		//console.log(data);
 		return (
-			<div className="min-w-[450px]">
+			<>
 				<MediaDetailHero data={data} />
 				<CastList data={data.credits} />
 				<Divider className="mt-2" />
@@ -55,7 +55,7 @@ function SingleMovie() {
 				<MediaPoster />
 				<Divider className="mt-2" />
 				<MediaRecommendation data={data.recommendations} />
-			</div>
+			</>
 		);
 	}
 }

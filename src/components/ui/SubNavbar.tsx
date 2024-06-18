@@ -10,7 +10,7 @@ function SubNavbar({ list }: SubNavbarProps) {
 	return (
 		<>
 			<div className="mt-8 mb-6">
-				<ul className="flex gap-x-8 md:gap-x-12 lg:gap-x-16 justify-center items-center">
+				<ul className="flex gap-x-4 md:gap-x-12 lg:gap-x-16 justify-center items-center">
 					{list.map(i => {
 						const { label, to } = i;
 						return (
