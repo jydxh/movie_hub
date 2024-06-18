@@ -19,13 +19,13 @@ function TvCard({ data }: { data: TvMultiFetchResponse }) {
 	const season = seasons[seasons.length - 1];
 
 	return (
-		<div className="rounded-lg border shadow-lg flex gap-x-4">
+		<div className="rounded-lg border shadow-lg sm:flex gap-x-4">
 			<img
 				src={`${baseImgUrl}/w260_and_h390_bestv2/${poster_path}`}
 				alt={name || "TV Show Poster"}
-				className="h-[12rem] rounded-lg"
+				className="sm:h-[12rem]  rounded-lg"
 			/>
-			<div>
+			<div className="p-4">
 				<p className="text-xl mt-4">
 					{season.name || "Season Info Unavailable"}
 				</p>
