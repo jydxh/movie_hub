@@ -10,7 +10,7 @@ async function fetchMultiSearch(
 	>(
 		`/search/${mode}?query=${query}&include_adult=false&language=en-US&page=${page}`
 	);
-	console.log(res.data);
+	//console.log(res.data);
 	return res.data;
 }
 export default fetchMultiSearch;

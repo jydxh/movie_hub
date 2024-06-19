@@ -680,3 +680,15 @@ export interface Profile {
 	vote_count: number;
 	width: number;
 }
+
+export interface SearchKeywordResponse {
+	page: number;
+	results: SearchKeywordResult[];
+	total_pages: number;
+	total_results: number;
+}
+
+export interface SearchKeywordResult {
+	id: number;
+	name: string;
+}

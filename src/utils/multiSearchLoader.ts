@@ -15,11 +15,11 @@ function multiSearchLoader(
 		try {
 			if (page) {
 				const res = await fetchMultiSearch(serachQuery, page, mode);
-				console.log(res);
+				//console.log(res);
 				return res;
 			} else {
 				const res = await fetchMultiSearch(serachQuery, "1", mode);
-				console.log(res);
+				//	console.log(res);
 				return res;
 			}
 		} catch (error) {

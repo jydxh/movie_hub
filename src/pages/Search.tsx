@@ -3,19 +3,20 @@ import SearchTags from "@/components/Search/SearchTags";
 import { LoaderFunction, Outlet } from "react-router";
 import fetchMultiSearch from "@/api/fetchMultiSearch";
 import { MultiSearchResponse, CollectionResultResponse } from "@/utils/types";
-import searchKeywordQuery from "@/api/searchKeywordQuery";
-import { useQuery } from "@tanstack/react-query";
 
 export const loader: LoaderFunction = async ({
 	request,
 }): Promise<MultiSearchResponse | null | CollectionResultResponse> => {
 	const url = new URL(request.url);
-	const query = url.searchParams.get("query")!;
+	const query = url.searchParams.get("query");
 	let page = url.searchParams.get("page");
 
 	try {
 		if (page === null) {
 			page = "1";
+		}
+		if (query === null) {
+			return null;
 		}
 		const data = await fetchMultiSearch(query, page);
 		//	console.log(data);
@@ -27,11 +28,6 @@ export const loader: LoaderFunction = async ({
 };
 
 function Search() {
-	const { data } = useQuery({
-		queryKey: ["searchKeyword", "hello"],
-		queryFn: searchKeywordQuery,
-	});
-	console.log(data);
 	return (
 		<main>
 			<SearchInput />
