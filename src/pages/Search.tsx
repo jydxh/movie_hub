@@ -31,7 +31,7 @@ function Search() {
 		queryKey: ["searchKeyword", "hello"],
 		queryFn: searchKeywordQuery,
 	});
-
+	console.log(data);
 	return (
 		<main>
 			<SearchInput />
