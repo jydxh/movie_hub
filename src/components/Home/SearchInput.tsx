@@ -10,7 +10,6 @@ function SearchInput() {
 					name="query"
 					className="ms-[2.6rem] rounded-full w-full py-2 ps-4 outline-none text-black"
 					placeholder="Search for a movie, tv show,person..."
-					required
 				/>
 				<Button
 					type="submit"

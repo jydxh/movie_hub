@@ -6,7 +6,7 @@ function SearchInput() {
 	const { pathname, search } = useLocation();
 	const navigate = useNavigate();
 	const params = new URLSearchParams(search);
-	const value = params.get("query")!;
+	const value = params.get("query") || undefined;
 
 	const [inputValue, setInputValue] = useState(value);
 	const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
@@ -18,7 +18,7 @@ function SearchInput() {
 		}
 	};
 	const handleSubmit = () => {
-		params.set("query", inputValue);
+		params.set("query", inputValue || "");
 		params.set("page", "1");
 		navigate(`${pathname}?${params.toString()}`);
 	};
