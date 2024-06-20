@@ -33,7 +33,7 @@ async function fetchTvList(
 		url = `/discover/tv?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc`;
 	}
 	const res = await customFetch<TVResponse>(url);
-	console.log(res.data);
+	//console.log(res.data);
 	return res.data;
 }
 export default fetchTvList;

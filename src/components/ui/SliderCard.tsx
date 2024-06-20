@@ -25,13 +25,15 @@ export function SliderCard({ data }: SliderCardProps) {
 						<Link to={`${release_date ? `/movie/${id}` : `/tv_show/${id}`}`}>
 							<img
 								src={`${baseImgUrl}/original/${poster_path}`}
-								alt={title}
+								alt={title || name}
 								className="w-[10rem] rounded-md shadow-lg"
 							/>
 							<RatingCircle value={vote_average} />
 							<p className="line-clamp-2">{title || name}</p>
 							<p className="mt-4 font-light text-gray-500">
-								{formateDate(release_date) || formateDate(first_air_date)}
+								{formateDate(release_date) ||
+									formateDate(first_air_date) ||
+									"unknow"}
 							</p>
 						</Link>
 					</div>

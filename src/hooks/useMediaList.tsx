@@ -182,3 +182,10 @@ function useMediaList(title: string, mode: "tv" | "movie") {
 	);
 }
 export default useMediaList;
+
+//Step1: logic for the inifinity pagination by using the useFetcher from react-router dom:
+//Step2:  update the loader funtion to accept a dynamic ${page}, from the URL,
+//Step3:  when scroll down trigger the observe call backfuntion, 1. pageRef.current value ++ ; 2. update the url serach params page into the pageRef.current value
+//Step4: since the url has updated the page, we can call the fetcher.load(${currentLocation}) at the oberserCallback logic to trigger the loader funtion so we can get the loader data,
+//Last step not sure, if react router dom will automatically handling the appending the data and render the page, or i have to manually append the loader data into the result state.  I guess it will return the current page data, and i should manually append it into the result state.
+// using the approach above can help for the user back to prev url also back to the position they were, instead of the top of the page

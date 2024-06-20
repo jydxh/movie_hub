@@ -36,15 +36,17 @@ function useSearch(mode: "multi" | "movie" | "tv" | "people") {
 				)}
 				{mode === "tv" && <SearchResults results={results as TVResults[]} />}
 				{mode === "multi" && <SearchResults results={results} />}
-				<div className="flex justify-center">
-					<Pagination
-						page={page}
-						count={total_pages}
-						variant="outlined"
-						shape="rounded"
-						onChange={handlePageChange}
-					/>
-				</div>
+				{total_pages > 1 && (
+					<div className="flex justify-center">
+						<Pagination
+							page={page}
+							count={total_pages}
+							variant="outlined"
+							shape="rounded"
+							onChange={handlePageChange}
+						/>
+					</div>
+				)}
 			</>
 		);
 	}
