@@ -1,7 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { Button } from "@mui/material";
+import { Box, Button, useTheme, TextField } from "@mui/material";
 
 import searchKeywordQuery from "@/api/searchKeywordQuery";
 import { useQuery } from "@tanstack/react-query";
@@ -11,6 +11,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { SearchKeywordResponse } from "@/utils/types";
 
 function SearchInput() {
+	const theme = useTheme();
 	const { pathname, search } = useLocation();
 	const navigate = useNavigate();
 	const params = new URLSearchParams(search);
@@ -23,7 +24,7 @@ function SearchInput() {
 	const searchKeywordRef = useRef(value);
 	const { data } = useQuery({
 		queryKey: ["searchKeyword", inputValue],
-		queryFn: async () => fetchTrendingAll("day"),
+		queryFn: async () => await fetchTrendingAll("day"),
 		enabled: inputValue === "", // only fetch when inital input is empty
 	});
 
@@ -53,6 +54,7 @@ function SearchInput() {
 	};
 
 	useEffect(() => {
+		//debouncer
 		const timer = setTimeout(async () => {
 			const res = await searchKeywordQuery({ query: inputValue || "" });
 			//	console.log(res);
@@ -61,10 +63,13 @@ function SearchInput() {
 		return () => clearTimeout(timer);
 	}, [inputValue]);
 
+	const displayData = data ? data.slice(0, 10) : []; // to trim the trending data into first 10 only, to prevent too long list
+
 	return (
 		<div className="relative">
 			<div className="border-b p-2 flex items-center gap-x-2">
 				<SearchIcon />
+				{/* 
 				<input
 					autoComplete="off"
 					onFocus={() => {
@@ -86,16 +91,47 @@ function SearchInput() {
 					placeholder="Seach for a movie, tv show, person"
 					className="border border-gray-400 bg-gray-500 text-white px-4 py-1 w-full rounded italic"
 				/>
+				 */}
+				<TextField
+					id="outlined-basic"
+					variant="outlined"
+					className="borderpx-4 py-1 w-full rounded italic"
+					size="small"
+					autoComplete="off"
+					onFocus={() => {
+						setShowKeyWord(true);
+					}}
+					onBlur={() => {
+						// add 100ms delay to make sure searchKeywordRef can get the value
+						setTimeout(() => {
+							setShowKeyWord(false);
+						}, 100);
+					}}
+					onChange={evt => {
+						setInputValue(evt.currentTarget.value);
+					}}
+					onKeyDown={handleKeyDown}
+					value={inputValue}
+					type="search"
+					name="query"
+					placeholder="Seach for a movie, tv show, person"
+				/>
 				<Button onClick={handleSubmit}>Search</Button>
 			</div>
-			<div className={`${showKeyWord ? "block" : "hidden"} p-4`}>
-				{data && (
+			<Box
+				sx={{
+					backgroundColor: theme.palette.background.default,
+					color: theme.palette.text.primary,
+				}}
+				component="div"
+				className={`${showKeyWord ? "block" : "hidden"} p-4 absolute w-full`}>
+				{displayData && (
 					<>
 						<p className="font-bold text-xl border-b p-1">
 							<TrendingUpIcon /> Trending
 						</p>
 						<ul>
-							{data.map(item => (
+							{displayData.map(item => (
 								<li
 									onMouseDown={handleSetSearch}
 									key={item.id}
@@ -111,18 +147,20 @@ function SearchInput() {
 				)}
 				{keywordsData && (
 					<ul>
-						{keywordsData.results.map(result => (
-							<li
-								onMouseDown={handleSetSearch}
-								key={result.id}
-								className="border-b p-1 hover:bg-gray-400 cursor-pointer">
-								<ManageSearchIcon />
-								<span className="ps-2">{result.name}</span>
-							</li>
-						))}
+						{keywordsData.results
+							.filter((_, index) => index < 10)
+							.map(result => (
+								<li
+									onMouseDown={handleSetSearch}
+									key={result.id}
+									className="border-b p-1 hover:bg-gray-400 cursor-pointer">
+									<ManageSearchIcon />
+									<span className="ps-2">{result.name}</span>
+								</li>
+							))}
 					</ul>
 				)}
-			</div>
+			</Box>
 		</div>
 	);
 }
