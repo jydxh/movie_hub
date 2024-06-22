@@ -15,19 +15,19 @@ async function fetchTvList(
 	const oneMonthLater = getDateOneMonthLater();
 	if (mode === "popular") {
 		url = `/discover/tv?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc${
-			searchParams && `&with_genres=${searchParams}`
+			searchParams ? `&with_genres=${searchParams}` : ""
 		}`;
 	} else if (mode === "arriving") {
 		url = `/discover/tv?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc&air_date.lte=${oneMonthLater}&air_date.gte=${today}${
-			searchParams && `&with_genres=${searchParams}`
+			searchParams ? `&with_genres=${searchParams}` : ""
 		}`;
 	} else if (mode === "on_Tv") {
-		url = `/discover/tv?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&air_date.lte=${today}&air_date.gte=${oneMonthAgo}${
-			searchParams && `&with_genres=${searchParams}`
+		url = `/discover/tv?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc&air_date.lte=${today}&air_date.gte=${oneMonthAgo}${
+			searchParams ? `&with_genres=${searchParams}` : ""
 		}`;
 	} else if (mode === "top_rated") {
-		url = `/discover/tv?include_adult=false&language=en-US&page=1&sort_by=vote_average.desc&vote_count.gte=200${
-			searchParams && `&with_genres=${searchParams}`
+		url = `/discover/tv?include_adult=false&language=en-US&page=${page}&sort_by=vote_average.desc&vote_count.gte=200${
+			searchParams ? `&with_genres=${searchParams}` : ""
 		}`;
 	} else {
 		url = `/discover/tv?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc`;
