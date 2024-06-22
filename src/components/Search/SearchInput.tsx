@@ -32,8 +32,7 @@ function SearchInput() {
 	// also, for better UX, the url query value should be two-way bind with the input value;
 	const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
 		if (evt.key === "Enter") {
-			const query = evt.currentTarget.value;
-			params.set("query", query);
+			params.set("query", inputValue || "");
 			params.set("page", "1");
 			navigate(`${pathname}?${params.toString()}`);
 		}
@@ -63,7 +62,7 @@ function SearchInput() {
 		return () => clearTimeout(timer);
 	}, [inputValue]);
 
-	const displayData = data ? data.slice(0, 10) : []; // to trim the trending data into first 10 only, to prevent too long list
+	const displayData = data ? data.slice(0, 10) : undefined; // to trim the trending data into first 10 only, to prevent too long list
 
 	return (
 		<div className="relative">
