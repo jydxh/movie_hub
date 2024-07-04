@@ -1,11 +1,11 @@
 import axios from "axios";
+//import "dotenv/config";
 
 const baseURL = "https://api.themoviedb.org/3";
 export const customFetch = axios.create({
 	baseURL,
 	headers: {
 		accept: "application/json",
-		Authorization:
-			"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMjkxNDc4YjFkOGY0ZTFmMDIxZmM2NWFmYjdiODZkZCIsInN1YiI6IjY1MjFiNzYzMGNiMzM1MTZmODdlMDFhZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ihQRMYJruH3nOYoIYCTWhanp_qFbnMnt1MH6BZYOiyk",
+		Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
 	},
 });
