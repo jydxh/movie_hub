@@ -39,6 +39,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env: 
+          VITE_TMDB_TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZGQxMDRlOGQyM2E1MjUyZTA3ODUxY2Y3ODYwNzlkMiIsIm5iZiI6MTcyMDEzNTIxNi4xMDA0MSwic3ViIjoiNjUyMWI3NjMwY2IzMzUxNmY4N2UwMWFkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.Z1VnUfRWNE-qQ4S9NQDD0QOFuqu_uAXSbQOPBEu6A5A
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
